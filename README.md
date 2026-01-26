@@ -142,7 +142,7 @@
             font-size: 14px;
             font-weight: 600;
             color: #1e40af;
-            min-width: 140px;
+            min-width: 280px;
             flex-shrink: 0;
         }
         
