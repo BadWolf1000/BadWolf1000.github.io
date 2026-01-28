@@ -1,0 +1,83 @@
+<div class="section" data-category="file-ops">
+    <div class="section-header">
+        <div class="section-icon operations">📄</div>
+        <h3>File Operations</h3>
+    </div>
+    <ul class="command-list">
+        <li class="command-item">
+            <span class="cmd">touch file.txt</span>
+            <span class="desc">Create file</span>
+            <code class="example">$ touch notes.txt<br>$ ls<br>notes.txt</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">cat file.txt</span>
+            <span class="desc">Show file content</span>
+            <code class="example">$ cat /etc/hostname<br>kali</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">head -n 20 file.txt</span>
+            <span class="desc">First 20 lines</span>
+            <code class="example">$ head -n 5 /etc/passwd<br>root:x:0:0:root:/root:/bin/bash<br>...</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">tail -n 20 file.txt</span>
+            <span class="desc">Last 20 lines</span>
+            <code class="example">$ tail -n 3 /var/log/auth.log<br>Jan 28 sshd: Accepted publickey</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">tail -f log.txt</span>
+            <span class="desc">Live logs</span>
+            <code class="example">$ tail -f /var/log/syslog<br>Jan 28 12:00:01 kali CRON[1234]: ...</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">less file.txt</span>
+            <span class="desc">Scrollable viewer</span>
+            <code class="example">$ less /var/log/syslog<br>(use q to quit, / to search)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">wc -l file.txt</span>
+            <span class="desc">Count lines</span>
+            <code class="example">$ wc -l /etc/passwd<br>42 /etc/passwd</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">mv old.txt new.txt</span>
+            <span class="desc">Rename/move file</span>
+            <code class="example">$ mv report.txt final_report.txt</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">cp file.txt copy.txt</span>
+            <span class="desc">Copy file</span>
+            <code class="example">$ cp config.yml config_backup.yml</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">cp -r dir/ backup/</span>
+            <span class="desc">Copy directory</span>
+            <code class="example">$ cp -r project/ project_bak/</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">rm file.txt</span>
+            <span class="desc">Delete file</span>
+            <code class="example">$ rm temp.txt<br>$ ls<br>(file removed)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">ln -s target link</span>
+            <span class="desc">Create symlink</span>
+            <code class="example">$ ln -s /opt/tools/nmap /usr/local/bin/nmap</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">file document</span>
+            <span class="desc">Detect file type</span>
+            <code class="example">$ file mystery<br>mystery: ELF 64-bit LSB executable</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">diff file1 file2</span>
+            <span class="desc">Compare files</span>
+            <code class="example">$ diff old.conf new.conf<br>3c3<br>&lt; port=80<br>&gt; port=443</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">tee file.txt</span>
+            <span class="desc">Write stdin to file</span>
+            <code class="example">$ echo "log" | tee output.txt<br>log</code>
+        </li>
+    </ul>
+</div>

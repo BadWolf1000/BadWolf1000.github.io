@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux Command Cheat Sheet</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="tux-icon">🐧</div>
+            <div class="header-text">
+                <h1>Linux Commands</h1>
+                <p>Essential cheat sheet for Red Team, Penetration Testing &amp; CTF</p>
+            </div>
+        </div>
+
+        <nav class="tab-bar">
+            <button class="tab active" data-filter="home">Home</button>
+            <button class="tab" data-filter="file-dir">📁 File &amp; Directory</button>
+            <button class="tab" data-filter="file-ops">📄 File Operations</button>
+            <button class="tab" data-filter="permissions">🔐 Permissions</button>
+            <button class="tab" data-filter="disk">💾 Disk &amp; Memory</button>
+            <button class="tab" data-filter="process">⚙️ Process</button>
+            <button class="tab" data-filter="network">🌐 Network</button>
+            <button class="tab" data-filter="shortcuts">⌨️ Shortcuts</button>
+            <button class="tab" data-filter="must-know">⭐ Must Know</button>
+            <button class="tab" data-filter="archive">🗜️ Archive</button>
+            <button class="tab" data-filter="ssh">🔑 SSH &amp; Remote</button>
+            <button class="tab" data-filter="sysinfo">💻 System Info</button>
+            <button class="tab" data-filter="text">📝 Text Processing</button>
+            <button class="tab" data-filter="recon">🔍 Recon</button>
+            <button class="tab" data-filter="scanning">🎯 Scanning</button>
+            <button class="tab" data-filter="webexp">🌐 Web Exploit</button>
+            <button class="tab" data-filter="exploitation">💥 Exploitation</button>
+            <button class="tab" data-filter="password">🔓 Passwords</button>
+            <button class="tab" data-filter="privesc">⬆️ Priv Esc</button>
+            <button class="tab" data-filter="revshell">🐚 Rev Shells</button>
+            <button class="tab" data-filter="forensics">🔬 Forensics</button>
+            <button class="tab" data-filter="stealth">👻 Stealth</button>
+            <button class="tab" data-filter="smb">💼 SMB &amp; Windows</button>
+            <button class="tab" data-filter="encoding">🔤 Encoding</button>
+            <button class="tab" data-filter="wireless">📡 Wireless</button>
+            <button class="tab" data-filter="transfer">📤 File Transfer</button>
+            <button class="tab" data-filter="tunneling">🚇 Tunneling</button>
+            <button class="tab" data-filter="osint">🕵️ OSINT</button>
+        </nav>
+
+        <div class="content">
+            <div id="home-container"></div>
+            <div class="grid hidden" id="sections-grid"></div>
+        </div>
+
+        <div class="footer">
+            <p>Essential Linux commands for Penetration Testing / Red Team / CTF / DevOps / Cybersecurity</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

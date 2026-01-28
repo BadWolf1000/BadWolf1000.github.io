@@ -1,0 +1,83 @@
+<div class="section" data-category="archive">
+    <div class="section-header">
+        <div class="section-icon archive">🗜️</div>
+        <h3>Archive &amp; Compression</h3>
+    </div>
+    <ul class="command-list">
+        <li class="command-item">
+            <span class="cmd">tar -czf file.tar.gz dir</span>
+            <span class="desc">Create gzip archive</span>
+            <code class="example">$ tar -czf backup.tar.gz /home/kali<br>(archive created)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">tar -xzf file.tar.gz</span>
+            <span class="desc">Extract gzip archive</span>
+            <code class="example">$ tar -xzf backup.tar.gz<br>(files extracted to current dir)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">tar -cjf file.tar.bz2 dir</span>
+            <span class="desc">Create bzip2 archive</span>
+            <code class="example">$ tar -cjf archive.tar.bz2 project/<br>(bzip2 compressed archive created)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">tar -xjf file.tar.bz2</span>
+            <span class="desc">Extract bzip2 archive</span>
+            <code class="example">$ tar -xjf archive.tar.bz2<br>(bzip2 archive extracted)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">tar -tf file.tar.gz</span>
+            <span class="desc">List archive contents</span>
+            <code class="example">$ tar -tf backup.tar.gz<br>home/kali/notes.txt<br>home/kali/scripts/</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">tar -xzf file.tar.gz -C /path</span>
+            <span class="desc">Extract to specific dir</span>
+            <code class="example">$ tar -xzf backup.tar.gz -C /tmp<br>(extracted to /tmp)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">zip -r archive.zip dir/</span>
+            <span class="desc">Zip directory recursively</span>
+            <code class="example">$ zip -r project.zip project/<br>adding: project/main.c (deflated 58%)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">zip test.zip file.txt</span>
+            <span class="desc">Create zip</span>
+            <code class="example">$ zip loot.zip data.csv<br>adding: data.csv (deflated 62%)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">unzip test.zip</span>
+            <span class="desc">Extract zip</span>
+            <code class="example">$ unzip loot.zip<br>inflating: data.csv</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">unzip -l archive.zip</span>
+            <span class="desc">List zip contents</span>
+            <code class="example">$ unzip -l loot.zip<br>Length  Name<br>2048    data.csv</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">gzip file.txt</span>
+            <span class="desc">Compress single file</span>
+            <code class="example">$ gzip largefile.log<br>$ ls<br>largefile.log.gz</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">gunzip file.txt.gz</span>
+            <span class="desc">Decompress gzip file</span>
+            <code class="example">$ gunzip largefile.log.gz<br>$ ls<br>largefile.log</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">xz file.txt</span>
+            <span class="desc">XZ compress</span>
+            <code class="example">$ xz database.sql<br>$ ls<br>database.sql.xz</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">unxz file.txt.xz</span>
+            <span class="desc">XZ decompress</span>
+            <code class="example">$ unxz database.sql.xz<br>$ ls<br>database.sql</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">7z x archive.7z</span>
+            <span class="desc">Extract 7zip archive</span>
+            <code class="example">$ 7z x backup.7z<br>Extracting archive: backup.7z<br>Everything is Ok</code>
+        </li>
+    </ul>
+</div>

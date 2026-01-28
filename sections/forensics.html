@@ -1,0 +1,78 @@
+<div class="section" data-category="forensics">
+    <div class="section-header">
+        <div class="section-icon forensics">🔬</div>
+        <h3>Forensics &amp; Data</h3>
+    </div>
+    <ul class="command-list">
+        <li class="command-item">
+            <span class="cmd">strings file</span>
+            <span class="desc">Extract strings</span>
+            <code class="example">$ strings binary.exe | grep flag<br>flag{hidden_text_here}</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">strings -n 10 file</span>
+            <span class="desc">Strings min length 10</span>
+            <code class="example">$ strings -n 10 mystery.bin<br>secret_password<br>flag{longer_text}</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">exiftool image.jpg</span>
+            <span class="desc">View metadata</span>
+            <code class="example">$ exiftool photo.jpg<br>GPS Latitude: 40.7128 N<br>Camera: Canon EOS R5</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">exiftool -all= image.jpg</span>
+            <span class="desc">Strip metadata</span>
+            <code class="example">$ exiftool -all= photo.jpg<br>1 image files updated</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">binwalk file</span>
+            <span class="desc">Analyze binary</span>
+            <code class="example">$ binwalk firmware.bin<br>0x0000  JPEG image<br>0x4000  Zip archive</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">binwalk -e file</span>
+            <span class="desc">Extract embedded files</span>
+            <code class="example">$ binwalk -e firmware.bin<br>Extracted to: _firmware.bin.extracted/</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">steghide extract -sf image.jpg</span>
+            <span class="desc">Extract steganography</span>
+            <code class="example">$ steghide extract -sf image.jpg<br>Enter passphrase:<br>wrote extracted data to "secret.txt"</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">zsteg image.png</span>
+            <span class="desc">PNG/BMP steganography</span>
+            <code class="example">$ zsteg image.png<br>b1,rgb,lsb,xy: text: "flag{hidden}"</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">foremost -i file</span>
+            <span class="desc">File carving</span>
+            <code class="example">$ foremost -i disk.img<br>Recovered: 5 jpg, 2 pdf, 1 png</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">dd if=file bs=1 skip=N count=M</span>
+            <span class="desc">Extract bytes from file</span>
+            <code class="example">$ dd if=disk.img bs=1 skip=512 count=1024 of=carved.bin<br>1024 bytes copied</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">volatility -f dump imageinfo</span>
+            <span class="desc">Memory analysis</span>
+            <code class="example">$ volatility -f mem.dmp imageinfo<br>Suggested Profile: Win10x64</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">volatility -f dump pslist</span>
+            <span class="desc">List memory processes</span>
+            <code class="example">$ volatility -f mem.dmp --profile=Win10x64 pslist<br>0x8234 cmd.exe  PID:1234</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">pdftotext file.pdf</span>
+            <span class="desc">Extract PDF text</span>
+            <code class="example">$ pdftotext document.pdf -<br>Confidential: password is hunter2</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">photorec disk.img</span>
+            <span class="desc">Recover deleted files</span>
+            <code class="example">$ photorec disk.img<br>Recovered: 128 files (jpg, doc, pdf)</code>
+        </li>
+    </ul>
+</div>

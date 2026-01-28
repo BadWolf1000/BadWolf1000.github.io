@@ -1,0 +1,78 @@
+<div class="section" data-category="process">
+    <div class="section-header">
+        <div class="section-icon process">⚙️</div>
+        <h3>Process Commands</h3>
+    </div>
+    <ul class="command-list">
+        <li class="command-item">
+            <span class="cmd">ps -ef</span>
+            <span class="desc">Running processes</span>
+            <code class="example">$ ps -ef | head -3<br>UID  PID PPID CMD<br>root   1    0 /sbin/init</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">ps aux</span>
+            <span class="desc">All processes detailed</span>
+            <code class="example">$ ps aux | grep ssh<br>root  892  0.0  sshd: /usr/sbin/sshd</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">top</span>
+            <span class="desc">Live processes</span>
+            <code class="example">$ top<br>PID USER  %CPU %MEM COMMAND<br>892 kali  12.3  4.1 firefox</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">htop</span>
+            <span class="desc">Interactive process viewer</span>
+            <code class="example">$ htop<br>(colorized, scrollable process list)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">kill PID</span>
+            <span class="desc">Kill process</span>
+            <code class="example">$ kill 1234<br>(process 1234 terminated)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">kill -9 PID</span>
+            <span class="desc">Force kill process</span>
+            <code class="example">$ kill -9 1234<br>(process forcefully killed)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">pkill name</span>
+            <span class="desc">Kill by name</span>
+            <code class="example">$ pkill firefox<br>(all firefox processes killed)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">bg</span>
+            <span class="desc">Resume in background</span>
+            <code class="example">$ bg<br>[1]+ nmap 10.10.10.0/24 &amp;</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">fg</span>
+            <span class="desc">Resume in foreground</span>
+            <code class="example">$ fg<br>nmap 10.10.10.0/24</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">jobs</span>
+            <span class="desc">List background jobs</span>
+            <code class="example">$ jobs<br>[1]+  Running  nmap 10.10.10.0/24 &amp;</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">nohup command &amp;</span>
+            <span class="desc">Run immune to hangup</span>
+            <code class="example">$ nohup ./scan.sh &amp;<br>nohup: output to 'nohup.out'</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">nice -n 10 command</span>
+            <span class="desc">Run with priority</span>
+            <code class="example">$ nice -n 19 hashcat -m 0 hash.txt wordlist<br>(runs with lowest priority)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">lsof -i :80</span>
+            <span class="desc">Who uses port 80</span>
+            <code class="example">$ lsof -i :80<br>apache2  1234  root  TCP *:80 (LISTEN)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">strace -p PID</span>
+            <span class="desc">Trace system calls</span>
+            <code class="example">$ strace -p 1234<br>read(3, "data...", 4096) = 128</code>
+        </li>
+    </ul>
+</div>

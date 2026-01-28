@@ -1,0 +1,38 @@
+<div class="section" data-category="encoding">
+    <div class="section-header">
+        <div class="section-icon operations">🔤</div>
+        <h3>Encoding &amp; Crypto</h3>
+    </div>
+    <ul class="command-list">
+        <li class="command-item">
+            <span class="cmd">base64 -d file</span>
+            <span class="desc">Base64 decode</span>
+            <code class="example">$ echo "SGVsbG8=" | base64 -d<br>Hello</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">echo text | base64</span>
+            <span class="desc">Base64 encode</span>
+            <code class="example">$ echo -n "secret" | base64<br>c2VjcmV0</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">xxd file</span>
+            <span class="desc">Hex dump</span>
+            <code class="example">$ xxd flag.bin | head -1<br>00000000: 7f45 4c46 .ELF</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">md5sum file</span>
+            <span class="desc">MD5 hash</span>
+            <code class="example">$ md5sum file.txt<br>d41d8cd98f00b204e9800998ecf8427e  file.txt</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">sha256sum file</span>
+            <span class="desc">SHA256 hash</span>
+            <code class="example">$ sha256sum file.txt<br>e3b0c44298fc1c14...  file.txt</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">openssl enc -aes-256-cbc -d</span>
+            <span class="desc">Decrypt AES</span>
+            <code class="example">$ openssl enc -aes-256-cbc -d -in secret.enc -out plain.txt<br>enter aes-256-cbc decryption password:</code>
+        </li>
+    </ul>
+</div>

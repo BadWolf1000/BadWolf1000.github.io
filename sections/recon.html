@@ -1,0 +1,78 @@
+<div class="section" data-category="recon">
+    <div class="section-header">
+        <div class="section-icon recon">🔍</div>
+        <h3>Reconnaissance</h3>
+    </div>
+    <ul class="command-list">
+        <li class="command-item">
+            <span class="cmd">nmap -sV target</span>
+            <span class="desc">Service scan</span>
+            <code class="example">$ nmap -sV 10.10.10.5<br>22/tcp open ssh OpenSSH 8.9<br>80/tcp open http Apache 2.4</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">nmap -sC target</span>
+            <span class="desc">Default scripts</span>
+            <code class="example">$ nmap -sC 10.10.10.5<br>|_http-title: Welcome Page</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">nmap -sCV target</span>
+            <span class="desc">Scripts + version scan</span>
+            <code class="example">$ nmap -sCV 10.10.10.5<br>22/tcp open ssh OpenSSH 8.9<br>|_banner: SSH-2.0-OpenSSH_8.9</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">nmap -p- target</span>
+            <span class="desc">All ports scan</span>
+            <code class="example">$ nmap -p- 10.10.10.5<br>8080/tcp open  http-proxy</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">nmap -p 80,443,8080 target</span>
+            <span class="desc">Specific ports</span>
+            <code class="example">$ nmap -p 80,443,8080 10.10.10.5<br>80/tcp open  http<br>443/tcp open  https</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">nmap -O target</span>
+            <span class="desc">OS detection</span>
+            <code class="example">$ sudo nmap -O 10.10.10.5<br>OS details: Linux 5.4 - 5.15</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">nmap -oN output.txt target</span>
+            <span class="desc">Save scan results</span>
+            <code class="example">$ nmap -sCV -oN scan.txt 10.10.10.5<br>(results saved to scan.txt)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">nmap --script vuln target</span>
+            <span class="desc">Vulnerability scripts</span>
+            <code class="example">$ nmap --script vuln 10.10.10.5<br>|_http-vuln-cve2017-5638: VULNERABLE</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">whois domain.com</span>
+            <span class="desc">Domain info</span>
+            <code class="example">$ whois example.com<br>Registrar: GoDaddy<br>Created: 1995-08-14</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">dig domain.com</span>
+            <span class="desc">DNS lookup</span>
+            <code class="example">$ dig example.com<br>example.com.  300 IN A 93.184.216.34</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">dig axfr @ns domain.com</span>
+            <span class="desc">DNS zone transfer</span>
+            <code class="example">$ dig axfr @ns1.target.com target.com<br>admin.target.com.  A  10.10.10.20</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">host domain.com</span>
+            <span class="desc">Quick DNS</span>
+            <code class="example">$ host example.com<br>example.com has address 93.184.216.34</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">dnsrecon -d domain.com</span>
+            <span class="desc">DNS enumeration</span>
+            <code class="example">$ dnsrecon -d target.com<br>[*] A target.com 10.10.10.5<br>[*] MX mail.target.com</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">fierce --domain domain.com</span>
+            <span class="desc">DNS brute force</span>
+            <code class="example">$ fierce --domain target.com<br>Found: admin.target.com (10.10.10.20)</code>
+        </li>
+    </ul>
+</div>

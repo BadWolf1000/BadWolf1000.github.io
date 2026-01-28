@@ -1,0 +1,98 @@
+<div class="section" data-category="file-dir">
+    <div class="section-header">
+        <div class="section-icon files">📁</div>
+        <h3>File &amp; Directory Commands</h3>
+    </div>
+    <ul class="command-list">
+        <li class="command-item">
+            <span class="cmd">pwd</span>
+            <span class="desc">Show current directory</span>
+            <code class="example">$ pwd<br>/home/kali/Desktop</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">ls</span>
+            <span class="desc">List files</span>
+            <code class="example">$ ls<br>file.txt  notes  scripts</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">ls -l</span>
+            <span class="desc">Detailed list</span>
+            <code class="example">$ ls -l<br>-rw-r--r-- 1 kali kali 420 Jan 1 file.txt</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">ls -a</span>
+            <span class="desc">Show hidden files</span>
+            <code class="example">$ ls -a<br>.  ..  .bashrc  .profile  file.txt</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">ls -lh</span>
+            <span class="desc">Human readable sizes</span>
+            <code class="example">$ ls -lh<br>-rw-r--r-- 1 kali kali 4.2K Jan 1 file.txt</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">ls -R</span>
+            <span class="desc">Recursive list</span>
+            <code class="example">$ ls -R<br>./src:<br>main.c  utils.c<br>./lib:<br>libfoo.so</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">cd foldername</span>
+            <span class="desc">Change directory</span>
+            <code class="example">$ cd /var/log<br>$ pwd<br>/var/log</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">cd ..</span>
+            <span class="desc">Go back one folder</span>
+            <code class="example">$ cd ..<br>$ pwd<br>/var</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">cd ~</span>
+            <span class="desc">Go to home directory</span>
+            <code class="example">$ cd ~<br>$ pwd<br>/home/kali</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">cd -</span>
+            <span class="desc">Go to previous directory</span>
+            <code class="example">$ cd -<br>/var/log</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">mkdir test</span>
+            <span class="desc">Create directory</span>
+            <code class="example">$ mkdir project<br>$ ls<br>project</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">mkdir -p a/b/c</span>
+            <span class="desc">Create nested dirs</span>
+            <code class="example">$ mkdir -p src/lib/utils<br>(creates all parent dirs)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">rmdir folder</span>
+            <span class="desc">Remove empty directory</span>
+            <code class="example">$ rmdir old_project<br>(removed if empty)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">rm -rf folder</span>
+            <span class="desc">Force remove directory</span>
+            <code class="example">$ rm -rf temp/<br>(recursively deleted)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">tree</span>
+            <span class="desc">Visual directory tree</span>
+            <code class="example">$ tree<br>.<br>├── src/<br>│   └── main.c<br>└── README</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">find / -name "*.conf"</span>
+            <span class="desc">Find files by name</span>
+            <code class="example">$ find / -name "*.conf" 2&gt;/dev/null<br>/etc/ssh/sshd_config</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">locate filename</span>
+            <span class="desc">Fast file search</span>
+            <code class="example">$ locate passwd<br>/etc/passwd<br>/usr/bin/passwd</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">which command</span>
+            <span class="desc">Find command path</span>
+            <code class="example">$ which python3<br>/usr/bin/python3</code>
+        </li>
+    </ul>
+</div>

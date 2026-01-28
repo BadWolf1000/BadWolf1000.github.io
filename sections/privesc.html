@@ -1,0 +1,78 @@
+<div class="section" data-category="privesc">
+    <div class="section-header">
+        <div class="section-icon privesc">⬆️</div>
+        <h3>Privilege Escalation</h3>
+    </div>
+    <ul class="command-list">
+        <li class="command-item">
+            <span class="cmd">sudo -l</span>
+            <span class="desc">Check sudo rights</span>
+            <code class="example">$ sudo -l<br>(root) NOPASSWD: /usr/bin/vim</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">find / -perm -4000 2&gt;/dev/null</span>
+            <span class="desc">Find SUID binaries</span>
+            <code class="example">$ find / -perm -4000 2&gt;/dev/null<br>/usr/bin/passwd<br>/usr/bin/pkexec</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">find / -perm -2000 2&gt;/dev/null</span>
+            <span class="desc">Find SGID binaries</span>
+            <code class="example">$ find / -perm -2000 2&gt;/dev/null<br>/usr/bin/wall<br>/usr/bin/crontab</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">getcap -r / 2&gt;/dev/null</span>
+            <span class="desc">List capabilities</span>
+            <code class="example">$ getcap -r / 2&gt;/dev/null<br>/usr/bin/python3 = cap_setuid+ep</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">cat /etc/crontab</span>
+            <span class="desc">Check cron jobs</span>
+            <code class="example">$ cat /etc/crontab<br>* * * * * root /opt/cleanup.sh</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">ls -la /etc/cron*</span>
+            <span class="desc">List all cron dirs</span>
+            <code class="example">$ ls -la /etc/cron.d/<br>-rw-r--r-- 1 root root backup_job</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">find / -writable -type f 2&gt;/dev/null</span>
+            <span class="desc">Find writable files</span>
+            <code class="example">$ find / -writable -type f 2&gt;/dev/null<br>/opt/backup.sh<br>/tmp/notes.txt</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">cat /etc/passwd</span>
+            <span class="desc">Check user accounts</span>
+            <code class="example">$ cat /etc/passwd | grep bash<br>root:x:0:0::/root:/bin/bash<br>admin:x:1001:1001::/home/admin:/bin/bash</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">env</span>
+            <span class="desc">Check environment vars</span>
+            <code class="example">$ env<br>PATH=/usr/local/bin:/usr/bin<br>LD_PRELOAD=/tmp/evil.so</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">linpeas.sh</span>
+            <span class="desc">Linux enum script</span>
+            <code class="example">$ ./linpeas.sh<br>[+] SUID - SGID Files<br>[!] /usr/bin/pkexec</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">linux-exploit-suggester.sh</span>
+            <span class="desc">Kernel exploit finder</span>
+            <code class="example">$ ./linux-exploit-suggester.sh<br>[+] CVE-2021-4034 (PwnKit)<br>[+] CVE-2022-0847 (DirtyPipe)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">pspy64</span>
+            <span class="desc">Monitor processes</span>
+            <code class="example">$ ./pspy64<br>CMD: UID=0 /bin/bash /opt/backup.sh</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">ss -tuln</span>
+            <span class="desc">Internal services</span>
+            <code class="example">$ ss -tuln<br>127.0.0.1:3306  LISTEN<br>127.0.0.1:8080  LISTEN</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">cat /etc/shadow</span>
+            <span class="desc">Read password hashes</span>
+            <code class="example">$ cat /etc/shadow<br>root:$6$salt$hash:19000:0:99999:7:::</code>
+        </li>
+    </ul>
+</div>

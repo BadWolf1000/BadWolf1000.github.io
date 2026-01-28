@@ -1,0 +1,73 @@
+<div class="section" data-category="scanning">
+    <div class="section-header">
+        <div class="section-icon scanning">🎯</div>
+        <h3>Advanced Scanning</h3>
+    </div>
+    <ul class="command-list">
+        <li class="command-item">
+            <span class="cmd">nmap -sS target</span>
+            <span class="desc">SYN stealth scan</span>
+            <code class="example">$ sudo nmap -sS 10.10.10.5<br>22/tcp open ssh (SYN scan)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">nmap -sU target</span>
+            <span class="desc">UDP scan</span>
+            <code class="example">$ sudo nmap -sU 10.10.10.5<br>53/udp  open  domain<br>161/udp open  snmp</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">nmap -sN target</span>
+            <span class="desc">TCP null scan</span>
+            <code class="example">$ sudo nmap -sN 10.10.10.5<br>(no flags set, evades some firewalls)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">nmap -sA target</span>
+            <span class="desc">ACK scan (firewall test)</span>
+            <code class="example">$ sudo nmap -sA 10.10.10.5<br>80/tcp  unfiltered  http<br>443/tcp filtered    https</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">nmap -A target</span>
+            <span class="desc">Aggressive scan</span>
+            <code class="example">$ nmap -A 10.10.10.5<br>OS: Linux 5.x | Services + scripts</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">nmap -T4 target</span>
+            <span class="desc">Faster timing</span>
+            <code class="example">$ nmap -T4 -p- 10.10.10.5<br>(aggressive timing, faster scan)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">nmap --min-rate 5000 target</span>
+            <span class="desc">Set minimum packet rate</span>
+            <code class="example">$ nmap --min-rate 5000 -p- 10.10.10.5<br>(fast full port scan)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">masscan -p1-65535 target</span>
+            <span class="desc">Fast port scan</span>
+            <code class="example">$ masscan -p1-65535 10.10.10.5 --rate=1000<br>open tcp 22, 80, 443</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">nikto -h target</span>
+            <span class="desc">Web vuln scan</span>
+            <code class="example">$ nikto -h http://10.10.10.5<br>+ /admin/: Directory indexing found</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">enum4linux target</span>
+            <span class="desc">SMB enumeration</span>
+            <code class="example">$ enum4linux 10.10.10.5<br>|  Share: public  Type: Disk</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">snmpwalk -v2c -c public target</span>
+            <span class="desc">SNMP enumeration</span>
+            <code class="example">$ snmpwalk -v2c -c public 10.10.10.5<br>sysDescr.0 = Linux target 5.15.0</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">nmap --script smb-enum-shares target</span>
+            <span class="desc">SMB share scan</span>
+            <code class="example">$ nmap --script smb-enum-shares 10.10.10.5<br>|  public: READ<br>|  admin$: NO ACCESS</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">rustscan -a target</span>
+            <span class="desc">Ultra-fast port scan</span>
+            <code class="example">$ rustscan -a 10.10.10.5<br>Open 10.10.10.5:22,80,443<br>(scans all 65535 ports in seconds)</code>
+        </li>
+    </ul>
+</div>

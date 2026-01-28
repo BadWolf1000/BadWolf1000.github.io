@@ -1,0 +1,33 @@
+<div class="section" data-category="osint">
+    <div class="section-header">
+        <div class="section-icon recon">🕵️</div>
+        <h3>OSINT</h3>
+    </div>
+    <ul class="command-list">
+        <li class="command-item">
+            <span class="cmd">theHarvester -d domain -b all</span>
+            <span class="desc">Email/subdomain enum</span>
+            <code class="example">$ theHarvester -d target.com -b google<br>[*] admin@target.com<br>[*] mail.target.com</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">sublist3r -d domain.com</span>
+            <span class="desc">Subdomain enum</span>
+            <code class="example">$ sublist3r -d target.com<br>www.target.com<br>api.target.com<br>dev.target.com</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">amass enum -d domain.com</span>
+            <span class="desc">Deep subdomain enum</span>
+            <code class="example">$ amass enum -d target.com<br>[+] 47 subdomains found</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">recon-ng</span>
+            <span class="desc">OSINT framework</span>
+            <code class="example">$ recon-ng<br>[recon-ng][default] &gt; marketplace search</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">sherlock username</span>
+            <span class="desc">Social media hunt</span>
+            <code class="example">$ sherlock johndoe<br>[+] GitHub: https://github.com/johndoe<br>[+] Twitter: https://twitter.com/johndoe</code>
+        </li>
+    </ul>
+</div>

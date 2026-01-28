@@ -1,0 +1,68 @@
+<div class="section" data-category="ssh">
+    <div class="section-header">
+        <div class="section-icon ssh">🔑</div>
+        <h3>SSH &amp; Remote</h3>
+    </div>
+    <ul class="command-list">
+        <li class="command-item">
+            <span class="cmd">ssh user@server</span>
+            <span class="desc">Connect to server</span>
+            <code class="example">$ ssh admin@192.168.1.10<br>admin@server:~$</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">ssh -p 2222 user@server</span>
+            <span class="desc">Connect on custom port</span>
+            <code class="example">$ ssh -p 2222 kali@10.10.10.5<br>kali@target:~$</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">ssh -i key.pem user@server</span>
+            <span class="desc">Connect with private key</span>
+            <code class="example">$ ssh -i ~/.ssh/id_rsa admin@10.10.10.5<br>admin@target:~$</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">scp file user@server:</span>
+            <span class="desc">Copy to server</span>
+            <code class="example">$ scp exploit.py kali@10.10.10.5:/tmp<br>exploit.py  100%  2KB</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">scp user@server:file local</span>
+            <span class="desc">Copy from server</span>
+            <code class="example">$ scp kali@10.10.10.5:/etc/passwd ./loot/<br>passwd  100%  1.2KB</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">scp -r dir user@server:</span>
+            <span class="desc">Copy directory to server</span>
+            <code class="example">$ scp -r tools/ kali@10.10.10.5:/tmp<br>linpeas.sh  100%  620KB</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">ssh-keygen</span>
+            <span class="desc">Generate SSH key</span>
+            <code class="example">$ ssh-keygen -t rsa -b 4096<br>Generating public/private rsa key pair.</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">ssh-copy-id user@server</span>
+            <span class="desc">Copy key to server</span>
+            <code class="example">$ ssh-copy-id kali@10.10.10.5<br>Number of keys added: 1</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">ssh user@server 'command'</span>
+            <span class="desc">Run remote command</span>
+            <code class="example">$ ssh admin@10.10.10.5 'cat /etc/hostname'<br>target-server</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">sftp user@server</span>
+            <span class="desc">Interactive file transfer</span>
+            <code class="example">$ sftp kali@10.10.10.5<br>sftp&gt; get /etc/shadow<br>Fetching /etc/shadow</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">ssh -N -f -L port:host:port user@server</span>
+            <span class="desc">Background tunnel</span>
+            <code class="example">$ ssh -N -f -L 3306:localhost:3306 admin@10.10.10.5<br>(background MySQL tunnel)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">eval $(ssh-agent) &amp;&amp; ssh-add key</span>
+            <span class="desc">SSH agent forwarding</span>
+            <code class="example">$ eval $(ssh-agent) &amp;&amp; ssh-add ~/.ssh/id_rsa<br>Identity added: /home/kali/.ssh/id_rsa</code>
+        </li>
+    </ul>
+</div>

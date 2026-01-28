@@ -1,0 +1,73 @@
+<div class="section" data-category="stealth">
+    <div class="section-header">
+        <div class="section-icon stealth">👻</div>
+        <h3>Stealth &amp; Evasion</h3>
+    </div>
+    <ul class="command-list">
+        <li class="command-item">
+            <span class="cmd">proxychains nmap target</span>
+            <span class="desc">Route through proxy</span>
+            <code class="example">$ proxychains nmap -sT 10.10.10.5<br>|S-chain|-&lt;&gt;-127.0.0.1:9050-&lt;&gt;-OK</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">proxychains4 -q command</span>
+            <span class="desc">Quiet proxy mode</span>
+            <code class="example">$ proxychains4 -q curl http://10.10.10.5<br>(routed through SOCKS, no chain output)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">nmap -D RND:10 target</span>
+            <span class="desc">Decoy scan</span>
+            <code class="example">$ nmap -D RND:10 10.10.10.5<br>(scan with 10 random decoy IPs)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">nmap -sS -T2 target</span>
+            <span class="desc">Slow stealth scan</span>
+            <code class="example">$ nmap -sS -T2 10.10.10.5<br>(polite timing to avoid detection)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">nmap --data-length 25 target</span>
+            <span class="desc">Pad scan packets</span>
+            <code class="example">$ nmap --data-length 25 10.10.10.5<br>(random data appended to evade IDS)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">macchanger -r eth0</span>
+            <span class="desc">Random MAC address</span>
+            <code class="example">$ macchanger -r eth0<br>New MAC: 3a:2b:1c:4d:5e:6f</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">macchanger -m XX:XX:XX:XX:XX:XX eth0</span>
+            <span class="desc">Specific MAC address</span>
+            <code class="example">$ macchanger -m 00:11:22:33:44:55 eth0<br>New MAC: 00:11:22:33:44:55</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">history -c</span>
+            <span class="desc">Clear bash history</span>
+            <code class="example">$ history -c<br>(command history cleared)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">unset HISTFILE</span>
+            <span class="desc">Disable history logging</span>
+            <code class="example">$ unset HISTFILE<br>(no commands will be logged)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">export HISTSIZE=0</span>
+            <span class="desc">Zero history size</span>
+            <code class="example">$ export HISTSIZE=0<br>(history buffer set to zero)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">shred -vfz -n 10 file</span>
+            <span class="desc">Secure delete</span>
+            <code class="example">$ shred -vfz -n 10 evidence.txt<br>pass 1/10 (random)... pass 10/10</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">touch -t 202301010000 file</span>
+            <span class="desc">Modify timestamp</span>
+            <code class="example">$ touch -t 202301010000 backdoor.sh<br>(timestamp set to Jan 1, 2023)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">timestomp (Meterpreter)</span>
+            <span class="desc">Modify file timestamps</span>
+            <code class="example">meterpreter &gt; timestomp payload.exe -z "2023-01-01 00:00:00"<br>(all timestamps modified)</code>
+        </li>
+    </ul>
+</div>

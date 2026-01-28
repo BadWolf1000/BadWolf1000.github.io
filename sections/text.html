@@ -1,0 +1,93 @@
+<div class="section" data-category="text">
+    <div class="section-header">
+        <div class="section-icon operations">📝</div>
+        <h3>Text Processing</h3>
+    </div>
+    <ul class="command-list">
+        <li class="command-item">
+            <span class="cmd">grep "text" file</span>
+            <span class="desc">Search text</span>
+            <code class="example">$ grep "error" /var/log/syslog<br>Jan 28 ERR: disk full</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">grep -r "text" dir/</span>
+            <span class="desc">Recursive search</span>
+            <code class="example">$ grep -r "password" /etc/<br>/etc/shadow:root:$6$hash...</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">grep -i "text" file</span>
+            <span class="desc">Case-insensitive search</span>
+            <code class="example">$ grep -i "error" log.txt<br>ERROR: connection refused<br>Error: timeout</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">grep -v "text" file</span>
+            <span class="desc">Invert match</span>
+            <code class="example">$ grep -v "#" /etc/ssh/sshd_config<br>Port 22<br>PermitRootLogin no</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">grep -c "text" file</span>
+            <span class="desc">Count matches</span>
+            <code class="example">$ grep -c "Failed" /var/log/auth.log<br>47</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">grep -E "regex" file</span>
+            <span class="desc">Extended regex</span>
+            <code class="example">$ grep -E "[0-9]{1,3}\.[0-9]{1,3}" access.log<br>192.168.1.5 - GET /admin</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">sed 's/old/new/' file</span>
+            <span class="desc">Replace text</span>
+            <code class="example">$ sed 's/http/https/' urls.txt<br>https://example.com</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">sed 's/old/new/g' file</span>
+            <span class="desc">Replace all occurrences</span>
+            <code class="example">$ sed 's/foo/bar/g' config.txt<br>(all foo replaced with bar)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">sed -i 's/old/new/g' file</span>
+            <span class="desc">In-place replace</span>
+            <code class="example">$ sed -i 's/debug=true/debug=false/g' app.conf<br>(file modified directly)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">awk '{print $1}' file</span>
+            <span class="desc">Process columns</span>
+            <code class="example">$ awk '{print $1}' access.log<br>192.168.1.5<br>10.0.0.3</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">awk -F: '{print $1}' file</span>
+            <span class="desc">Custom delimiter</span>
+            <code class="example">$ awk -F: '{print $1}' /etc/passwd<br>root<br>kali<br>www-data</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">sort file.txt</span>
+            <span class="desc">Sort lines</span>
+            <code class="example">$ sort names.txt<br>alice<br>bob<br>charlie</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">sort -u file.txt</span>
+            <span class="desc">Sort and deduplicate</span>
+            <code class="example">$ sort -u ips.txt<br>10.10.10.1<br>10.10.10.5<br>192.168.1.1</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">uniq file.txt</span>
+            <span class="desc">Remove duplicates</span>
+            <code class="example">$ sort data.txt | uniq<br>(adjacent duplicates removed)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">cut -d: -f1 file</span>
+            <span class="desc">Extract field</span>
+            <code class="example">$ cut -d: -f1 /etc/passwd<br>root<br>kali<br>www-data</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">tr 'a-z' 'A-Z'</span>
+            <span class="desc">Translate characters</span>
+            <code class="example">$ echo "hello" | tr 'a-z' 'A-Z'<br>HELLO</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">rev</span>
+            <span class="desc">Reverse string</span>
+            <code class="example">$ echo "flag{secret}" | rev<br>}terces{galf</code>
+        </li>
+    </ul>
+</div>

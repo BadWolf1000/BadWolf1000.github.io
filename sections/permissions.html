@@ -1,0 +1,68 @@
+<div class="section" data-category="permissions">
+    <div class="section-header">
+        <div class="section-icon permissions">🔐</div>
+        <h3>Permissions</h3>
+    </div>
+    <ul class="command-list">
+        <li class="command-item">
+            <span class="cmd">chmod 755 script.sh</span>
+            <span class="desc">Set execute permission</span>
+            <code class="example">$ chmod 755 deploy.sh<br>$ ls -l deploy.sh<br>-rwxr-xr-x 1 kali kali 512 ...</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">chmod +x script.sh</span>
+            <span class="desc">Make executable</span>
+            <code class="example">$ chmod +x scan.sh<br>$ ./scan.sh<br>Running scan...</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">chmod 600 id_rsa</span>
+            <span class="desc">Owner read/write only</span>
+            <code class="example">$ chmod 600 ~/.ssh/id_rsa<br>(only owner can read/write)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">chmod -R 777 dir/</span>
+            <span class="desc">Recursive full access</span>
+            <code class="example">$ chmod -R 777 /tmp/share/<br>(all permissions for everyone)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">chown user file</span>
+            <span class="desc">Change owner</span>
+            <code class="example">$ sudo chown www-data index.html</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">chown user:group file</span>
+            <span class="desc">Change owner and group</span>
+            <code class="example">$ sudo chown www-data:www-data /var/www/html</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">chgrp group file</span>
+            <span class="desc">Change group only</span>
+            <code class="example">$ chgrp developers project/<br>(group set to developers)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">umask 022</span>
+            <span class="desc">Set default permissions</span>
+            <code class="example">$ umask 022<br>(new files: 644, dirs: 755)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">ls -l</span>
+            <span class="desc">See permissions</span>
+            <code class="example">$ ls -l<br>-rw-r--r-- 1 root root 1024 ...</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">stat file</span>
+            <span class="desc">Detailed file info</span>
+            <code class="example">$ stat file.txt<br>Access: (0644/-rw-r--r--) Uid: 1000</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">getfacl file</span>
+            <span class="desc">Show ACL permissions</span>
+            <code class="example">$ getfacl secret.txt<br>user::rw-  group::r--  other::---</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">setfacl -m u:user:rwx file</span>
+            <span class="desc">Set ACL for user</span>
+            <code class="example">$ setfacl -m u:kali:rwx shared.txt</code>
+        </li>
+    </ul>
+</div>

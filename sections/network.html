@@ -1,0 +1,73 @@
+<div class="section" data-category="network">
+    <div class="section-header">
+        <div class="section-icon network">🌐</div>
+        <h3>Network</h3>
+    </div>
+    <ul class="command-list">
+        <li class="command-item">
+            <span class="cmd">ip a</span>
+            <span class="desc">Show IP address</span>
+            <code class="example">$ ip a<br>eth0: inet 192.168.1.105/24</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">ifconfig</span>
+            <span class="desc">Network interfaces</span>
+            <code class="example">$ ifconfig eth0<br>inet 192.168.1.105  netmask 255.255.255.0</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">ip route</span>
+            <span class="desc">Show routing table</span>
+            <code class="example">$ ip route<br>default via 192.168.1.1 dev eth0</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">ping google.com</span>
+            <span class="desc">Test connectivity</span>
+            <code class="example">$ ping -c 2 google.com<br>64 bytes from 142.250.80.46: ttl=118</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">traceroute target</span>
+            <span class="desc">Trace packet route</span>
+            <code class="example">$ traceroute 10.10.10.5<br>1  192.168.1.1  1ms<br>2  10.0.0.1  5ms</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">curl url</span>
+            <span class="desc">Fetch web content</span>
+            <code class="example">$ curl -I http://target<br>HTTP/1.1 200 OK</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">netstat -tuln</span>
+            <span class="desc">Show open ports</span>
+            <code class="example">$ netstat -tuln<br>tcp  0.0.0.0:22  LISTEN<br>tcp  0.0.0.0:80  LISTEN</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">ss -tuln</span>
+            <span class="desc">Socket statistics</span>
+            <code class="example">$ ss -tuln<br>LISTEN  0  128  0.0.0.0:22  0.0.0.0:*</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">arp -a</span>
+            <span class="desc">ARP table</span>
+            <code class="example">$ arp -a<br>gateway (192.168.1.1) at aa:bb:cc:dd:ee:ff</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">nslookup domain.com</span>
+            <span class="desc">DNS query</span>
+            <code class="example">$ nslookup google.com<br>Address: 142.250.80.46</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">tcpdump -i eth0</span>
+            <span class="desc">Capture packets</span>
+            <code class="example">$ sudo tcpdump -i eth0 port 80<br>IP 192.168.1.105 &gt; 10.10.10.5: HTTP</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">iptables -L</span>
+            <span class="desc">List firewall rules</span>
+            <code class="example">$ sudo iptables -L<br>Chain INPUT (policy ACCEPT)<br>Chain FORWARD (policy DROP)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">nmcli dev status</span>
+            <span class="desc">Network manager status</span>
+            <code class="example">$ nmcli dev status<br>eth0  ethernet  connected  Wired</code>
+        </li>
+    </ul>
+</div>

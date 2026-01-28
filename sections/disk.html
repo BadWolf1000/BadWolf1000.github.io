@@ -1,0 +1,68 @@
+<div class="section" data-category="disk">
+    <div class="section-header">
+        <div class="section-icon disk">💾</div>
+        <h3>Disk &amp; Memory</h3>
+    </div>
+    <ul class="command-list">
+        <li class="command-item">
+            <span class="cmd">df -h</span>
+            <span class="desc">Disk space</span>
+            <code class="example">$ df -h<br>/dev/sda1  50G  12G  36G  25% /</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">du -sh folder</span>
+            <span class="desc">Folder size</span>
+            <code class="example">$ du -sh /var/log<br>2.4G    /var/log</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">du -h --max-depth=1</span>
+            <span class="desc">Size per subfolder</span>
+            <code class="example">$ du -h --max-depth=1 /var<br>2.4G  /var/log<br>500M  /var/cache</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">free -m</span>
+            <span class="desc">Memory usage</span>
+            <code class="example">$ free -m<br>Mem:  7976  3201  2845  412</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">free -h</span>
+            <span class="desc">Human-readable memory</span>
+            <code class="example">$ free -h<br>Mem:  7.8Gi  3.1Gi  2.8Gi  412Mi</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">lsblk</span>
+            <span class="desc">List block devices</span>
+            <code class="example">$ lsblk<br>sda      50G  disk<br>├─sda1   49G  part  /<br>└─sda2    1G  part  [SWAP]</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">fdisk -l</span>
+            <span class="desc">List partitions</span>
+            <code class="example">$ sudo fdisk -l<br>/dev/sda1  2048  Linux filesystem</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">mount /dev/sdb1 /mnt</span>
+            <span class="desc">Mount drive</span>
+            <code class="example">$ sudo mount /dev/sdb1 /mnt<br>$ ls /mnt<br>files  docs</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">umount /mnt</span>
+            <span class="desc">Unmount drive</span>
+            <code class="example">$ sudo umount /mnt<br>(device unmounted)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">swapon --show</span>
+            <span class="desc">Show swap info</span>
+            <code class="example">$ swapon --show<br>/dev/sda2 partition 1G  0B  -2</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">vmstat</span>
+            <span class="desc">Virtual memory stats</span>
+            <code class="example">$ vmstat<br>procs  memory  swap  io  cpu<br> 2  0  3201  2845  0  0  95  5</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">iostat</span>
+            <span class="desc">I/O statistics</span>
+            <code class="example">$ iostat<br>Device  tps  kB_read/s  kB_wrtn/s<br>sda     5.2  120.4      45.8</code>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,78 @@
+<div class="section" data-category="sysinfo">
+    <div class="section-header">
+        <div class="section-icon interview">💻</div>
+        <h3>System Information</h3>
+    </div>
+    <ul class="command-list">
+        <li class="command-item">
+            <span class="cmd">uname -a</span>
+            <span class="desc">System info</span>
+            <code class="example">$ uname -a<br>Linux kali 6.1.0-kali9 x86_64 GNU/Linux</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">uname -r</span>
+            <span class="desc">Kernel version</span>
+            <code class="example">$ uname -r<br>6.1.0-kali9-amd64</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">whoami</span>
+            <span class="desc">Current user</span>
+            <code class="example">$ whoami<br>kali</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">id</span>
+            <span class="desc">User ID and groups</span>
+            <code class="example">$ id<br>uid=1000(kali) gid=1000(kali) groups=27(sudo)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">hostname</span>
+            <span class="desc">Show hostname</span>
+            <code class="example">$ hostname<br>kali-workstation</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">uptime</span>
+            <span class="desc">System uptime</span>
+            <code class="example">$ uptime<br>14:23 up 3 days, 2:10, 2 users</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">cat /etc/os-release</span>
+            <span class="desc">OS details</span>
+            <code class="example">$ cat /etc/os-release<br>NAME="Kali GNU/Linux"<br>VERSION="2024.1"</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">lscpu</span>
+            <span class="desc">CPU information</span>
+            <code class="example">$ lscpu<br>Architecture: x86_64<br>CPU(s): 4<br>Model name: Intel i7-12700</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">lsusb</span>
+            <span class="desc">USB devices</span>
+            <code class="example">$ lsusb<br>Bus 001 Device 003: Realtek RTL8187 Wireless</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">lspci</span>
+            <span class="desc">PCI devices</span>
+            <code class="example">$ lspci<br>00:02.0 VGA: Intel UHD Graphics<br>01:00.0 Network: Intel Wi-Fi 6</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">dmesg | tail</span>
+            <span class="desc">Kernel messages</span>
+            <code class="example">$ dmesg | tail -5<br>[USB] New device: Alfa AWUS036ACH</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">last</span>
+            <span class="desc">Login history</span>
+            <code class="example">$ last<br>kali  pts/0  192.168.1.5  Wed Jan 28 14:00</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">w</span>
+            <span class="desc">Who is logged in</span>
+            <code class="example">$ w<br>USER  TTY  FROM  IDLE  WHAT<br>kali  pts/0  192.168.1.5  0.00s  bash</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">cat /proc/version</span>
+            <span class="desc">Kernel compile info</span>
+            <code class="example">$ cat /proc/version<br>Linux version 6.1.0-kali9 (gcc 12.3.0)</code>
+        </li>
+    </ul>
+</div>

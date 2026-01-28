@@ -1,0 +1,33 @@
+<div class="section" data-category="tunneling">
+    <div class="section-header">
+        <div class="section-icon ssh">🚇</div>
+        <h3>Tunneling &amp; Pivoting</h3>
+    </div>
+    <ul class="command-list">
+        <li class="command-item">
+            <span class="cmd">ssh -L 8080:target:80 user@pivot</span>
+            <span class="desc">Local port forward</span>
+            <code class="example">$ ssh -L 8080:172.16.0.5:80 user@10.10.10.5<br>(localhost:8080 &rarr; internal:80)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">ssh -R 8080:localhost:80 user@pivot</span>
+            <span class="desc">Remote port forward</span>
+            <code class="example">$ ssh -R 8080:localhost:80 user@10.10.14.5<br>(remote:8080 &rarr; your local:80)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">ssh -D 9050 user@pivot</span>
+            <span class="desc">SOCKS proxy</span>
+            <code class="example">$ ssh -D 9050 user@10.10.10.5<br>(SOCKS proxy on localhost:9050)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">chisel server -p 8000 --reverse</span>
+            <span class="desc">Chisel server</span>
+            <code class="example">$ chisel server -p 8000 --reverse<br>server: Listening on 0.0.0.0:8000</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">socat TCP-LISTEN:8080,fork TCP:target:80</span>
+            <span class="desc">Port forwarding</span>
+            <code class="example">$ socat TCP-LISTEN:8080,fork TCP:172.16.0.5:80<br>(forwards 8080 &rarr; internal:80)</code>
+        </li>
+    </ul>
+</div>

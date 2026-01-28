@@ -1,0 +1,73 @@
+<div class="section" data-category="must-know">
+    <div class="section-header">
+        <div class="section-icon interview">⭐</div>
+        <h3>Must Know</h3>
+    </div>
+    <ul class="command-list">
+        <li class="command-item">
+            <span class="cmd">sudo</span>
+            <span class="desc">Run as admin</span>
+            <code class="example">$ sudo apt update<br>[sudo] password for kali: ****</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">sudo su</span>
+            <span class="desc">Switch to root</span>
+            <code class="example">$ sudo su<br>root@kali:/home/kali#</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">vi file.txt</span>
+            <span class="desc">Edit file</span>
+            <code class="example">$ vi config.txt<br>(press i to insert, :wq to save)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">nano file.txt</span>
+            <span class="desc">Simple editor</span>
+            <code class="example">$ nano notes.txt<br>(^X to exit, ^O to save)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">echo "hello"</span>
+            <span class="desc">Print text</span>
+            <code class="example">$ echo "Hello, World!"<br>Hello, World!</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">grep pattern file</span>
+            <span class="desc">Search in file</span>
+            <code class="example">$ grep "root" /etc/passwd<br>root:x:0:0:root:/root:/bin/bash</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">man command</span>
+            <span class="desc">Show manual</span>
+            <code class="example">$ man ls<br>LS(1) - list directory contents</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">history</span>
+            <span class="desc">Command history</span>
+            <code class="example">$ history<br>1  ls -la<br>2  cd /tmp<br>3  whoami</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">alias ll='ls -la'</span>
+            <span class="desc">Create alias</span>
+            <code class="example">$ alias ll='ls -la'<br>$ ll<br>total 32  drwxr-xr-x ...</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">export VAR=value</span>
+            <span class="desc">Set environment var</span>
+            <code class="example">$ export PATH=$PATH:/opt/tools<br>$ echo $PATH<br>/usr/bin:/opt/tools</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">env</span>
+            <span class="desc">Show environment</span>
+            <code class="example">$ env<br>HOME=/home/kali<br>PATH=/usr/local/bin:...</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">xargs</span>
+            <span class="desc">Build commands from input</span>
+            <code class="example">$ cat urls.txt | xargs -I {} curl {}<br>(curls each URL in file)</code>
+        </li>
+        <li class="command-item">
+            <span class="cmd">watch -n 5 command</span>
+            <span class="desc">Repeat every 5 seconds</span>
+            <code class="example">$ watch -n 5 'netstat -tuln'<br>(refreshes every 5s)</code>
+        </li>
+    </ul>
+</div>
