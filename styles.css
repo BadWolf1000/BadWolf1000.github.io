@@ -75,6 +75,21 @@ body
     color: rgba(255, 255, 255, 0.6);
 }
 
+.logo-text a
+{
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    margin-left: 4px;
+}
+
+.logo-text a:hover
+{
+    color: #a78bfa;
+    text-decoration: underline;
+}
+
 /* ===== Main Navigation ===== */
 
 .main-nav
