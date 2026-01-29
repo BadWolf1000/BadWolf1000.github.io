@@ -28,8 +28,56 @@ document.addEventListener("DOMContentLoaded", function ()
     var cache = {};
     var blogPosts = [];
 
+    // ===== URL Hash Routing =====
+    function navigate(hash)
+    {
+        if (window.location.hash !== hash)
+        {
+            window.location.hash = hash;
+        }
+        else
+        {
+            handleRoute();
+        }
+    }
+
+    function handleRoute()
+    {
+        var hash = window.location.hash || "#blog";
+        var parts = hash.substring(1).split("/");
+        var route = parts[0];
+        var param = parts[1] || null;
+
+        if (route === "blog" || route === "")
+        {
+            showView("blog");
+        }
+        else if (route === "commands")
+        {
+            showView("commands");
+            if (param)
+            {
+                activateCmdFilter(param);
+            }
+            else
+            {
+                loadCmdHome();
+            }
+        }
+        else if (route === "post" && param)
+        {
+            loadBlogPost(param);
+        }
+        else
+        {
+            showView("blog");
+        }
+    }
+
+    window.addEventListener("hashchange", handleRoute);
+
     // ===== View Switching =====
-    function switchView(viewName)
+    function showView(viewName)
     {
         views.forEach(function (view)
         {
@@ -50,7 +98,6 @@ document.addEventListener("DOMContentLoaded", function ()
         {
             commandsView.classList.add("active");
             document.querySelector('[data-view="commands"]').classList.add("active");
-            loadCmdHome();
         }
         else if (viewName === "post")
         {
@@ -63,14 +110,14 @@ document.addEventListener("DOMContentLoaded", function ()
         tab.addEventListener("click", function ()
         {
             var view = tab.getAttribute("data-view");
-            switchView(view);
+            navigate("#" + view);
         });
     });
 
     // ===== Blog Functionality =====
     function loadBlogPosts()
     {
-        fetch("posts/posts.json")
+        fetch("blog-posts/posts.json")
             .then(function (response)
             {
                 return response.json();
@@ -79,11 +126,13 @@ document.addEventListener("DOMContentLoaded", function ()
             {
                 blogPosts = data.posts;
                 renderBlogCards();
+                handleRoute();
             })
             .catch(function (error)
             {
                 console.log("No blog posts found or error loading:", error);
-                blogPostsContainer.innerHTML = '<p style="color: rgba(255,255,255,0.6); text-align: center;">No posts yet. Add your first post to the posts/ folder!</p>';
+                blogPostsContainer.innerHTML = '<p style="color: rgba(255,255,255,0.6); text-align: center;">No posts yet. Add your first post to the blog-posts/ folder!</p>';
+                handleRoute();
             });
     }
 
@@ -91,7 +140,7 @@ document.addEventListener("DOMContentLoaded", function ()
     {
         if (blogPosts.length === 0)
         {
-            blogPostsContainer.innerHTML = '<p style="color: rgba(255,255,255,0.6); text-align: center;">No posts yet. Add your first post to the posts/ folder!</p>';
+            blogPostsContainer.innerHTML = '<p style="color: rgba(255,255,255,0.6); text-align: center;">No posts yet. Add your first post to the blog-posts/ folder!</p>';
             return;
         }
 
@@ -119,14 +168,14 @@ document.addEventListener("DOMContentLoaded", function ()
             card.addEventListener("click", function ()
             {
                 var slug = card.getAttribute("data-slug");
-                loadBlogPost(slug);
+                navigate("#post/" + slug);
             });
         });
     }
 
     function loadBlogPost(slug)
     {
-        fetch("posts/" + slug + ".html")
+        fetch("blog-posts/" + slug + ".html")
             .then(function (response)
             {
                 return response.text();
@@ -134,17 +183,19 @@ document.addEventListener("DOMContentLoaded", function ()
             .then(function (html)
             {
                 postContent.innerHTML = html;
-                switchView("post");
+                showView("post");
+                window.scrollTo(0, 0);
             })
             .catch(function (error)
             {
                 console.log("Error loading post:", error);
+                navigate("#blog");
             });
     }
 
     backBtn.addEventListener("click", function ()
     {
-        switchView("blog");
+        navigate("#blog");
     });
 
     // ===== Commands Functionality =====
@@ -169,6 +220,16 @@ document.addEventListener("DOMContentLoaded", function ()
 
     function loadCmdHome()
     {
+        cmdTabs.forEach(function (t)
+        {
+            t.classList.remove("active");
+        });
+        var homeTab = document.querySelector('.cmd-tab[data-filter="cmd-home"]');
+        if (homeTab)
+        {
+            homeTab.classList.add("active");
+        }
+
         fetchSection("home").then(function (html)
         {
             cmdHomeContainer.innerHTML = html;
@@ -181,7 +242,7 @@ document.addEventListener("DOMContentLoaded", function ()
                 card.addEventListener("click", function ()
                 {
                     var target = card.getAttribute("data-target");
-                    activateCmdFilter(target);
+                    navigate("#commands/" + target);
                 });
             });
         });
@@ -226,7 +287,14 @@ document.addEventListener("DOMContentLoaded", function ()
         tab.addEventListener("click", function ()
         {
             var filter = tab.getAttribute("data-filter");
-            activateCmdFilter(filter);
+            if (filter === "cmd-home")
+            {
+                navigate("#commands");
+            }
+            else
+            {
+                navigate("#commands/" + filter);
+            }
         });
     });
 

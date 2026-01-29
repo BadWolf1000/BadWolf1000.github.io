@@ -1,0 +1,28 @@
+{
+    "posts": [
+        {
+            "slug": "hashcat-password-cracking",
+            "title": "Mastering Hashcat: The Complete Guide to Password Cracking",
+            "date": "January 29, 2026",
+            "tag": "Security",
+            "icon": "🔓",
+            "excerpt": "Learn how to use Hashcat for password recovery, from basic dictionary attacks to advanced rule-based cracking and real-world pentesting scenarios."
+        },
+        {
+            "slug": "getting-started-with-nmap",
+            "title": "Getting Started with Nmap: A Beginner's Guide",
+            "date": "January 29, 2026",
+            "tag": "Security",
+            "icon": "🎯",
+            "excerpt": "Learn the fundamentals of network scanning with Nmap, from basic host discovery to advanced service enumeration."
+        },
+        {
+            "slug": "linux-file-permissions",
+            "title": "Understanding Linux File Permissions",
+            "date": "January 25, 2026",
+            "tag": "Linux",
+            "icon": "🔐",
+            "excerpt": "A deep dive into Linux file permissions, ownership, and how to secure your system properly."
+        }
+    ]
+}
