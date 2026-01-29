@@ -1,0 +1,89 @@
+<div class="post-header">
+    <div class="post-meta">
+        <span class="post-date">January 25, 2026</span>
+        <span class="post-tag">Linux</span>
+    </div>
+    <h1>Understanding Linux File Permissions</h1>
+</div>
+
+<div class="post-body">
+    <p>File permissions are a fundamental concept in Linux security. They control who can read, write, and execute files on your system. Understanding them is essential for any Linux user or administrator.</p>
+
+    <h2>The Permission Model</h2>
+    <p>Linux uses a permission model based on three types of access:</p>
+    <ul>
+        <li><strong>Read (r)</strong> - View file contents or list directory contents</li>
+        <li><strong>Write (w)</strong> - Modify file contents or create/delete files in a directory</li>
+        <li><strong>Execute (x)</strong> - Run a file as a program or access a directory</li>
+    </ul>
+
+    <h2>Permission Groups</h2>
+    <p>These permissions are assigned to three groups:</p>
+    <ul>
+        <li><strong>Owner (u)</strong> - The user who owns the file</li>
+        <li><strong>Group (g)</strong> - The group that owns the file</li>
+        <li><strong>Others (o)</strong> - Everyone else</li>
+    </ul>
+
+    <h2>Reading Permissions</h2>
+    <p>Use <code>ls -l</code> to view permissions:</p>
+    <pre><code>$ ls -l script.sh
+-rwxr-xr-- 1 ryan users 1024 Jan 25 10:00 script.sh</code></pre>
+
+    <p>Breaking down <code>-rwxr-xr--</code>:</p>
+    <ul>
+        <li><code>-</code> - File type (- for regular file, d for directory)</li>
+        <li><code>rwx</code> - Owner permissions (read, write, execute)</li>
+        <li><code>r-x</code> - Group permissions (read, execute)</li>
+        <li><code>r--</code> - Others permissions (read only)</li>
+    </ul>
+
+    <h2>Numeric Permissions</h2>
+    <p>Permissions can also be expressed as numbers:</p>
+    <ul>
+        <li>Read = 4</li>
+        <li>Write = 2</li>
+        <li>Execute = 1</li>
+    </ul>
+    <p>Add them up for each group. So <code>rwxr-xr--</code> becomes <code>754</code>.</p>
+
+    <h2>Changing Permissions</h2>
+    <p>Use <code>chmod</code> to change permissions:</p>
+    <pre><code># Using symbolic notation
+chmod u+x script.sh        # Add execute for owner
+chmod g-w file.txt         # Remove write for group
+chmod o=r file.txt         # Set others to read only
+
+# Using numeric notation
+chmod 755 script.sh        # rwxr-xr-x
+chmod 644 file.txt         # rw-r--r--</code></pre>
+
+    <h2>Changing Ownership</h2>
+    <p>Use <code>chown</code> to change the owner and group:</p>
+    <pre><code>chown ryan file.txt           # Change owner
+chown ryan:users file.txt     # Change owner and group
+chown :users file.txt         # Change only group</code></pre>
+
+    <h2>Special Permissions</h2>
+    <p>Linux also has special permissions:</p>
+    <ul>
+        <li><strong>SUID (4)</strong> - Run as file owner</li>
+        <li><strong>SGID (2)</strong> - Run as group owner</li>
+        <li><strong>Sticky Bit (1)</strong> - Only owner can delete in directory</li>
+    </ul>
+
+    <blockquote>
+        Be careful with SUID/SGID on executables - they can be security risks if not properly managed.
+    </blockquote>
+
+    <h2>Best Practices</h2>
+    <ul>
+        <li>Apply the principle of least privilege</li>
+        <li>Regularly audit file permissions</li>
+        <li>Be cautious with 777 permissions</li>
+        <li>Use groups to manage access efficiently</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>Mastering file permissions is crucial for Linux security. Take time to understand them, and always think carefully before changing permissions on sensitive files.</p>
+</div>
