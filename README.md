@@ -90,6 +90,10 @@ This is a static site that can be hosted on:
 - Vercel
 - Any static file server
 
+## Note
+
+Styles and hash-based routing were created using AI
+
 ## License
 
 MIT License - Feel free to use and modify for your own projects.
