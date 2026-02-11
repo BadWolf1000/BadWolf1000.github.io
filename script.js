@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function ()
     var blogView = document.getElementById("blog-view");
     var commandsView = document.getElementById("commands-view");
     var postView = document.getElementById("post-view");
+    var portfolioView = document.getElementById("portfolio-view");
     var blogPostsContainer = document.getElementById("blog-posts");
     var postContent = document.getElementById("post-content");
     var backBtn = document.getElementById("back-to-blog");
@@ -25,23 +26,6 @@ document.addEventListener("DOMContentLoaded", function ()
     // Theme toggle
     var themeToggle = document.getElementById("theme-toggle");
     var themeIcon = themeToggle.querySelector(".theme-icon");
-
-    // Sort dropdown
-    var sortBtn = document.getElementById("sort-btn");
-    var sortMenu = document.getElementById("sort-menu");
-    var sortItems = sortMenu.querySelectorAll(".dropdown-item");
-
-    // Quiz elements
-    var quizModal = document.getElementById("quiz-modal");
-    var openQuizBtn = document.getElementById("open-quiz");
-    var closeQuizBtn = document.getElementById("quiz-close");
-    var quizCategories = document.getElementById("quiz-categories");
-    var quizSettings = document.getElementById("quiz-settings");
-    var quizContent = document.getElementById("quiz-content");
-    var quizResults = document.getElementById("quiz-results");
-    var quizStartBtn = document.getElementById("quiz-start");
-    var quizNextBtn = document.getElementById("quiz-next");
-    var quizRestartBtn = document.getElementById("quiz-restart");
 
     var sectionNames =
     [
@@ -86,25 +70,18 @@ document.addEventListener("DOMContentLoaded", function ()
     var cache = {};
     var blogPosts = [];
     var allCommands = [];
-    var currentSort = "default";
-
-    // Quiz state
-    var quizState = {
-        selectedCategories: [],
-        questions: [],
-        currentQuestion: 0,
-        score: 0,
-        answered: false
-    };
 
     // ===== Theme Toggle =====
+    var sunIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
+    var moonIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+
     function initTheme()
     {
         var savedTheme = localStorage.getItem("theme");
         if (savedTheme === "light")
         {
             document.body.classList.add("light-mode");
-            themeIcon.textContent = "🌙";
+            themeIcon.innerHTML = moonIcon;
         }
     }
 
@@ -112,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function ()
     {
         document.body.classList.toggle("light-mode");
         var isLight = document.body.classList.contains("light-mode");
-        themeIcon.textContent = isLight ? "🌙" : "☀️";
+        themeIcon.innerHTML = isLight ? moonIcon : sunIcon;
         localStorage.setItem("theme", isLight ? "light" : "dark");
     }
 
@@ -155,6 +132,10 @@ document.addEventListener("DOMContentLoaded", function ()
                 loadCmdHome();
             }
         }
+        else if (route === "portfolio")
+        {
+            showView("portfolio");
+        }
         else if (route === "post" && param)
         {
             loadBlogPost(param);
@@ -189,6 +170,11 @@ document.addEventListener("DOMContentLoaded", function ()
         {
             commandsView.classList.add("active");
             document.querySelector('[data-view="commands"]').classList.add("active");
+        }
+        else if (viewName === "portfolio")
+        {
+            portfolioView.classList.add("active");
+            document.querySelector('[data-view="portfolio"]').classList.add("active");
         }
         else if (viewName === "post")
         {
@@ -403,7 +389,6 @@ document.addEventListener("DOMContentLoaded", function ()
         {
             cmdSectionsGrid.innerHTML = html;
             addCopyButtons(cmdSectionsGrid);
-            applySortToSection(cmdSectionsGrid);
         });
     }
 
@@ -570,356 +555,13 @@ document.addEventListener("DOMContentLoaded", function ()
 
     clearSearchBtn.addEventListener("click", clearSearch);
 
-    // Keyboard shortcut: / to focus search
     document.addEventListener("keydown", function (e)
     {
-        if (e.key === "/" && document.activeElement !== searchInput)
-        {
-            var hash = window.location.hash || "#blog";
-            if (hash.startsWith("#commands"))
-            {
-                e.preventDefault();
-                searchInput.focus();
-            }
-        }
         if (e.key === "Escape" && document.activeElement === searchInput)
         {
             clearSearch();
             searchInput.blur();
         }
-    });
-
-    // ===== Sort Functionality =====
-    sortBtn.addEventListener("click", function (e)
-    {
-        e.stopPropagation();
-        sortMenu.classList.toggle("hidden");
-    });
-
-    document.addEventListener("click", function ()
-    {
-        sortMenu.classList.add("hidden");
-    });
-
-    sortItems.forEach(function (item)
-    {
-        item.addEventListener("click", function ()
-        {
-            sortItems.forEach(function (i) { i.classList.remove("active"); });
-            item.classList.add("active");
-            currentSort = item.getAttribute("data-sort");
-            sortMenu.classList.add("hidden");
-
-            // Re-apply sort to current section
-            applySortToSection(cmdSectionsGrid);
-        });
-    });
-
-    function applySortToSection(container)
-    {
-        var commandList = container.querySelector(".command-list");
-        if (!commandList) return;
-
-        var items = Array.from(commandList.querySelectorAll(".command-item"));
-        if (items.length === 0) return;
-
-        if (currentSort === "alpha-asc")
-        {
-            items.sort(function (a, b)
-            {
-                var cmdA = a.querySelector(".cmd").textContent.toLowerCase();
-                var cmdB = b.querySelector(".cmd").textContent.toLowerCase();
-                return cmdA.localeCompare(cmdB);
-            });
-        }
-        else if (currentSort === "alpha-desc")
-        {
-            items.sort(function (a, b)
-            {
-                var cmdA = a.querySelector(".cmd").textContent.toLowerCase();
-                var cmdB = b.querySelector(".cmd").textContent.toLowerCase();
-                return cmdB.localeCompare(cmdA);
-            });
-        }
-
-        // Re-append in sorted order
-        items.forEach(function (item)
-        {
-            commandList.appendChild(item);
-        });
-    }
-
-    // ===== Quiz Functionality =====
-    function initQuizCategories()
-    {
-        var html = sectionNames.map(function (name)
-        {
-            return '<button class="quiz-category-btn" data-category="' + name + '">' +
-                (sectionLabels[name] || name) + '</button>';
-        }).join("");
-        quizCategories.innerHTML = html;
-
-        var categoryBtns = quizCategories.querySelectorAll(".quiz-category-btn");
-        categoryBtns.forEach(function (btn)
-        {
-            btn.addEventListener("click", function ()
-            {
-                btn.classList.toggle("selected");
-                var category = btn.getAttribute("data-category");
-                var idx = quizState.selectedCategories.indexOf(category);
-                if (idx > -1)
-                {
-                    quizState.selectedCategories.splice(idx, 1);
-                }
-                else
-                {
-                    quizState.selectedCategories.push(category);
-                }
-            });
-        });
-    }
-
-    function generateQuizQuestions(count)
-    {
-        var filteredCommands = allCommands;
-        if (quizState.selectedCategories.length > 0)
-        {
-            filteredCommands = allCommands.filter(function (cmd)
-            {
-                return quizState.selectedCategories.includes(cmd.category);
-            });
-        }
-
-        if (filteredCommands.length < 4)
-        {
-            alert("Please select categories with at least 4 commands");
-            return false;
-        }
-
-        // Shuffle and pick questions
-        var shuffled = filteredCommands.slice().sort(function () { return Math.random() - 0.5; });
-        var questionCount = Math.min(count, shuffled.length);
-        var questions = [];
-
-        for (var i = 0; i < questionCount; i++)
-        {
-            var correctCmd = shuffled[i];
-
-            // Get wrong answers from other commands
-            var wrongAnswers = filteredCommands
-                .filter(function (cmd) { return cmd.cmd !== correctCmd.cmd; })
-                .sort(function () { return Math.random() - 0.5; })
-                .slice(0, 3)
-                .map(function (cmd) { return cmd.desc; });
-
-            // Randomly decide question type (0 = what does X do, 1 = which command does Y)
-            var questionType = Math.random() > 0.5 ? 0 : 1;
-
-            if (questionType === 0)
-            {
-                // What does this command do?
-                var answers = [correctCmd.desc].concat(wrongAnswers).sort(function () { return Math.random() - 0.5; });
-                questions.push({
-                    type: "cmd-to-desc",
-                    question: "What does this command do?",
-                    code: correctCmd.cmd,
-                    answers: answers,
-                    correct: correctCmd.desc,
-                    category: correctCmd.category
-                });
-            }
-            else
-            {
-                // Which command does this?
-                var wrongCmds = filteredCommands
-                    .filter(function (cmd) { return cmd.cmd !== correctCmd.cmd; })
-                    .sort(function () { return Math.random() - 0.5; })
-                    .slice(0, 3)
-                    .map(function (cmd) { return cmd.cmd; });
-
-                var cmdAnswers = [correctCmd.cmd].concat(wrongCmds).sort(function () { return Math.random() - 0.5; });
-                questions.push({
-                    type: "desc-to-cmd",
-                    question: "Which command does this?",
-                    code: correctCmd.desc,
-                    answers: cmdAnswers,
-                    correct: correctCmd.cmd,
-                    category: correctCmd.category
-                });
-            }
-        }
-
-        quizState.questions = questions;
-        return true;
-    }
-
-    function showQuestion()
-    {
-        var q = quizState.questions[quizState.currentQuestion];
-        var questionEl = document.getElementById("quiz-question");
-        var answersEl = document.getElementById("quiz-answers");
-        var feedbackEl = document.getElementById("quiz-feedback");
-        var progressText = document.getElementById("quiz-progress-text");
-        var progressFill = document.getElementById("quiz-progress-fill");
-
-        progressText.textContent = "Question " + (quizState.currentQuestion + 1) + " of " + quizState.questions.length;
-        progressFill.style.width = ((quizState.currentQuestion + 1) / quizState.questions.length * 100) + "%";
-
-        questionEl.innerHTML = '<p class="quiz-question-text">' + q.question + '</p>' +
-            '<div class="quiz-question-code">' + escapeHTML(q.code) + '</div>';
-
-        answersEl.innerHTML = q.answers.map(function (answer)
-        {
-            return '<button class="quiz-answer-btn" data-answer="' + escapeHTML(answer) + '">' +
-                escapeHTML(answer) + '</button>';
-        }).join("");
-
-        feedbackEl.classList.add("hidden");
-        quizNextBtn.classList.add("hidden");
-        quizState.answered = false;
-
-        var answerBtns = answersEl.querySelectorAll(".quiz-answer-btn");
-        answerBtns.forEach(function (btn)
-        {
-            btn.addEventListener("click", function ()
-            {
-                if (quizState.answered) return;
-                handleAnswer(btn.getAttribute("data-answer"), answerBtns);
-            });
-        });
-    }
-
-    function handleAnswer(selected, buttons)
-    {
-        quizState.answered = true;
-        var q = quizState.questions[quizState.currentQuestion];
-        var isCorrect = selected === q.correct;
-        var feedbackEl = document.getElementById("quiz-feedback");
-
-        buttons.forEach(function (btn)
-        {
-            btn.disabled = true;
-            var answer = btn.getAttribute("data-answer");
-            if (answer === q.correct)
-            {
-                btn.classList.add("correct");
-            }
-            else if (answer === selected && !isCorrect)
-            {
-                btn.classList.add("incorrect");
-            }
-        });
-
-        if (isCorrect)
-        {
-            quizState.score++;
-            feedbackEl.className = "quiz-feedback correct";
-            feedbackEl.textContent = "Correct! Well done.";
-        }
-        else
-        {
-            feedbackEl.className = "quiz-feedback incorrect";
-            feedbackEl.innerHTML = "Incorrect. The correct answer is: <strong>" + escapeHTML(q.correct) + "</strong>";
-        }
-
-        feedbackEl.classList.remove("hidden");
-
-        if (quizState.currentQuestion < quizState.questions.length - 1)
-        {
-            quizNextBtn.classList.remove("hidden");
-            quizNextBtn.textContent = "Next Question";
-        }
-        else
-        {
-            quizNextBtn.classList.remove("hidden");
-            quizNextBtn.textContent = "See Results";
-        }
-    }
-
-    function showResults()
-    {
-        quizContent.classList.add("hidden");
-        quizResults.classList.remove("hidden");
-
-        var scoreEl = document.getElementById("quiz-score");
-        var summaryEl = document.getElementById("quiz-summary");
-        var percentage = Math.round((quizState.score / quizState.questions.length) * 100);
-
-        scoreEl.innerHTML = '<div class="quiz-score-number">' + percentage + '%</div>' +
-            '<div class="quiz-score-label">' + quizState.score + ' out of ' + quizState.questions.length + ' correct</div>';
-
-        var message;
-        if (percentage === 100) message = "Perfect score! You're a Linux master!";
-        else if (percentage >= 80) message = "Excellent work! Keep it up!";
-        else if (percentage >= 60) message = "Good job! Room for improvement.";
-        else if (percentage >= 40) message = "Not bad, keep practicing!";
-        else message = "Keep studying, you'll get there!";
-
-        summaryEl.innerHTML = '<div class="quiz-summary-item"><span>Score</span><span>' + quizState.score + '/' + quizState.questions.length + '</span></div>' +
-            '<div class="quiz-summary-item"><span>Percentage</span><span>' + percentage + '%</span></div>' +
-            '<div class="quiz-summary-item"><span>Status</span><span>' + message + '</span></div>';
-    }
-
-    function resetQuiz()
-    {
-        quizState.questions = [];
-        quizState.currentQuestion = 0;
-        quizState.score = 0;
-        quizState.answered = false;
-
-        quizSettings.classList.remove("hidden");
-        quizContent.classList.add("hidden");
-        quizResults.classList.add("hidden");
-    }
-
-    openQuizBtn.addEventListener("click", function ()
-    {
-        quizModal.classList.remove("hidden");
-        initQuizCategories();
-    });
-
-    closeQuizBtn.addEventListener("click", function ()
-    {
-        quizModal.classList.add("hidden");
-        resetQuiz();
-    });
-
-    quizModal.addEventListener("click", function (e)
-    {
-        if (e.target === quizModal)
-        {
-            quizModal.classList.add("hidden");
-            resetQuiz();
-        }
-    });
-
-    quizStartBtn.addEventListener("click", function ()
-    {
-        var count = parseInt(document.getElementById("quiz-count").value);
-        if (generateQuizQuestions(count))
-        {
-            quizSettings.classList.add("hidden");
-            quizContent.classList.remove("hidden");
-            showQuestion();
-        }
-    });
-
-    quizNextBtn.addEventListener("click", function ()
-    {
-        if (quizState.currentQuestion < quizState.questions.length - 1)
-        {
-            quizState.currentQuestion++;
-            showQuestion();
-        }
-        else
-        {
-            showResults();
-        }
-    });
-
-    quizRestartBtn.addEventListener("click", function ()
-    {
-        resetQuiz();
     });
 
     // ===== Blog Post Editor =====

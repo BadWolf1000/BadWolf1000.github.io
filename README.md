@@ -1,17 +1,16 @@
 # Tech Blog & Linux Command Reference
 
-A personal tech blog and comprehensive Linux command reference built as a static website. Features a modern dark/light theme, interactive quiz system, and a hidden blog post editor for easy content management.
+A personal tech blog, Linux command reference, and portfolio built as a static website. Features a modern dark/light theme and a hidden blog post editor for easy content management.
 
 ## Features
 
 - **Blog Section** - Tech articles with syntax-highlighted code blocks
 - **Linux Command Reference** - 27 categories covering system administration, networking, and security
-- **Search Functionality** - Real-time search across all commands (press `/` to focus)
+- **Portfolio** - Education, leadership, skills, and work experience
+- **Search Functionality** - Real-time search across all commands
 - **Copy-to-Clipboard** - One-click copying for command examples
 - **Syntax Highlighting** - Powered by Highlight.js
 - **Dark/Light Mode** - Toggle with persistent preference
-- **Sort Options** - Alphabetical sorting for command lists
-- **Interactive Quiz** - Test your Linux knowledge with customizable quizzes
 - **Blog Post Editor** - Hidden admin feature for creating new posts (Ctrl+Shift+E)
 
 ## Project Structure
@@ -48,7 +47,6 @@ npx serve
 
 | Shortcut | Action |
 |----------|--------|
-| `/` | Focus search (in Commands view) |
 | `Escape` | Clear search |
 | `Ctrl+Shift+E` | Reveal blog post editor |
 
@@ -89,10 +87,6 @@ This is a static site that can be hosted on:
 - Netlify
 - Vercel
 - Any static file server
-
-## Note
-
-Styles and hash-based routing were created using AI
 
 ## License
 

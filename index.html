@@ -12,21 +12,22 @@
 <body>
     <div class="container">
         <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
-            <span class="theme-icon">☀️</span>
+            <span class="theme-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            </span>
         </button>
         <header class="site-header">
             <div class="header-content">
                 <div class="logo">
-                    <span class="logo-icon">⚡</span>
                     <div class="logo-text">
                         <h1>Ryan's Tech Blog</h1>
                         <p>Security, Linux, and everything in between</p>
-                        <p>Add me on<a href="https://discordapp.com/users/246263080651194368" target="_blank">Discord</a> and<a href="https://www.linkedin.com/in/ryansnavely27/" target="_blank">LinkedIn</a>!</p>
                     </div>
                 </div>
                 <nav class="main-nav">
-                    <button class="nav-tab active" data-view="blog">📝 Blog</button>
-                    <button class="nav-tab" data-view="commands">🐧 Linux Commands</button>
+                    <button class="nav-tab active" data-view="blog">Blog</button>
+                    <button class="nav-tab" data-view="commands">Linux Commands</button>
+                    <button class="nav-tab" data-view="portfolio">Portfolio</button>
                 </nav>
             </div>
         </header>
@@ -51,23 +52,10 @@
                     <p>Essential cheat sheet for Red Team, Penetration Testing & CTF</p>
                     <div class="commands-toolbar">
                         <div class="search-container">
-                            <input type="text" id="command-search" class="search-input" placeholder="Search commands... (Press / to focus)">
-                            <span class="search-icon">🔍</span>
-                        </div>
-                        <div class="toolbar-buttons">
-                            <div class="filter-dropdown">
-                                <button class="toolbar-btn" id="sort-btn">
-                                    <span>⇅</span> Sort
-                                </button>
-                                <div class="dropdown-menu hidden" id="sort-menu">
-                                    <button class="dropdown-item active" data-sort="default">Default</button>
-                                    <button class="dropdown-item" data-sort="alpha-asc">A → Z</button>
-                                    <button class="dropdown-item" data-sort="alpha-desc">Z → A</button>
-                                </div>
-                            </div>
-                            <button class="toolbar-btn quiz-btn" id="open-quiz">
-                                <span>🧠</span> Quiz
-                            </button>
+                            <input type="text" id="command-search" class="search-input" placeholder="Search commands...">
+                            <span class="search-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -116,6 +104,173 @@
                 </div>
             </div>
 
+            <!-- Portfolio View -->
+            <div id="portfolio-view" class="view">
+                <div class="portfolio-hero">
+                    <h2>Ryan Snavely</h2>
+                    <p class="portfolio-tagline">Cybersecurity Student &amp; Aspiring Cybersecurity Analyst / Malware Triage Specialist</p>
+                    <div class="portfolio-links">
+                        <a href="https://github.com/BadWolf1000" target="_blank" class="portfolio-link-btn">GitHub</a>
+                        <a href="https://www.linkedin.com/in/ryansnavely27/" target="_blank" class="portfolio-link-btn">LinkedIn</a>
+                        <a href="mailto:ryan.snavely1@gmail.com" class="portfolio-link-btn">Email</a>
+                    </div>
+                </div>
+
+                <div class="portfolio-sections">
+                    <!-- About -->
+                    <div class="portfolio-card">
+                        <div class="portfolio-card-header">
+                            <h3>Education</h3>
+                        </div>
+                        <div class="portfolio-card-body">
+                            <div class="portfolio-item">
+                                <div class="portfolio-item-header">
+                                    <strong>Pennsylvania State University</strong>
+                                    <span class="portfolio-item-date">Expected December 2027</span>
+                                </div>
+                                <p>Bachelor's of Cybersecurity Analytics and Operations</p>
+                                <p class="portfolio-item-sub">Second Year Student &bull; Middletown, PA</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Leadership & Activities -->
+                    <div class="portfolio-card">
+                        <div class="portfolio-card-header">
+                            <h3>Leadership &amp; Activities</h3>
+                        </div>
+                        <div class="portfolio-card-body">
+                            <div class="portfolio-item">
+                                <div class="portfolio-item-header">
+                                    <strong>Vice President of Cyberlions</strong>
+                                    <span class="portfolio-item-date">Oct 2025 - Present</span>
+                                </div>
+                                <p>Pennsylvania State University &bull; Middletown, PA</p>
+                                <ul>
+                                    <li>Assisting the president and other board members with events, funding, and competitions</li>
+                                    <li>Teaching offensive and defensive cybersecurity techniques to students weekly</li>
+                                </ul>
+                            </div>
+                            <div class="portfolio-item">
+                                <div class="portfolio-item-header">
+                                    <strong>Cyber Skyline &amp; CrowdStrike Mentorship</strong>
+                                    <span class="portfolio-item-date">Oct 2025 - Present</span>
+                                </div>
+                                <p>Pennsylvania State University &bull; Remote</p>
+                                <ul>
+                                    <li>Engaging with CrowdStrike mentors for career preparation and industry insight</li>
+                                </ul>
+                            </div>
+                            <div class="portfolio-item">
+                                <div class="portfolio-item-header">
+                                    <strong>National Cyber League (NCL)</strong>
+                                    <span class="portfolio-item-date">Spring &amp; Fall 2025</span>
+                                </div>
+                                <p>Individual &amp; Team Games</p>
+                                <ul>
+                                    <li><strong>Individual:</strong> Top 7% nationally (Fall: 570/7,873 &bull; Spring: 661/8,573)</li>
+                                    <li><strong>Team:</strong> Top 25% (Fall) and 6% (Spring) nationally</li>
+                                    <li>Strengths in Scanning &amp; Recon, Enumeration/Exploitation, Web App Exploitation, Password Cracking, and OSINT</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Skills -->
+                    <div class="portfolio-card">
+                        <div class="portfolio-card-header">
+                            <h3>Skills</h3>
+                        </div>
+                        <div class="portfolio-card-body">
+                            <div class="portfolio-skills-grid">
+                                <div class="portfolio-skill-group">
+                                    <h4>Cybersecurity</h4>
+                                    <div class="portfolio-tags">
+                                        <span class="portfolio-tag">Metasploit</span>
+                                        <span class="portfolio-tag">Burp Suite</span>
+                                        <span class="portfolio-tag">Penetration Testing</span>
+                                        <span class="portfolio-tag">Exploit Development</span>
+                                    </div>
+                                </div>
+                                <div class="portfolio-skill-group">
+                                    <h4>Technical</h4>
+                                    <div class="portfolio-tags">
+                                        <span class="portfolio-tag">Python</span>
+                                        <span class="portfolio-tag">Bash</span>
+                                        <span class="portfolio-tag">Linux</span>
+                                        <span class="portfolio-tag">IDA</span>
+                                        <span class="portfolio-tag">dotPeek</span>
+                                        <span class="portfolio-tag">Microsoft Office Suite</span>
+                                    </div>
+                                </div>
+                                <div class="portfolio-skill-group">
+                                    <h4>Operations</h4>
+                                    <div class="portfolio-tags">
+                                        <span class="portfolio-tag">Team Management</span>
+                                        <span class="portfolio-tag">Scheduling</span>
+                                        <span class="portfolio-tag">Workflow Optimization</span>
+                                        <span class="portfolio-tag">Document Management</span>
+                                    </div>
+                                </div>
+                                <div class="portfolio-skill-group">
+                                    <h4>Professional</h4>
+                                    <div class="portfolio-tags">
+                                        <span class="portfolio-tag">Communication</span>
+                                        <span class="portfolio-tag">Attention to Detail</span>
+                                        <span class="portfolio-tag">Adaptability</span>
+                                        <span class="portfolio-tag">Problem Solving</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Work Experience -->
+                    <div class="portfolio-card">
+                        <div class="portfolio-card-header">
+                            <h3>Work Experience</h3>
+                        </div>
+                        <div class="portfolio-card-body">
+                            <div class="portfolio-item">
+                                <div class="portfolio-item-header">
+                                    <strong>Target</strong>
+                                    <span class="portfolio-item-date">Jul 2025 - Present</span>
+                                </div>
+                                <p>Team Member &bull; Lebanon, PA</p>
+                                <ul>
+                                    <li>Supports retail operations including stocking, cashiering, and assisting customers</li>
+                                    <li>Collaborated with team members to maintain organized shelves and product availability</li>
+                                    <li>Delivers friendly, efficient service to promote positive customer experiences</li>
+                                </ul>
+                            </div>
+                            <div class="portfolio-item">
+                                <div class="portfolio-item-header">
+                                    <strong>Iron Valley Snow Tubing</strong>
+                                    <span class="portfolio-item-date">Dec 2022 - Present</span>
+                                </div>
+                                <p>Seasonal Employee &bull; Lebanon, PA</p>
+                                <ul>
+                                    <li>Provided customer support and assistance during snow tubing season operations</li>
+                                    <li>Handled equipment preparation to ensure customer satisfaction</li>
+                                </ul>
+                            </div>
+                            <div class="portfolio-item">
+                                <div class="portfolio-item-header">
+                                    <strong>Scoop O Dough</strong>
+                                    <span class="portfolio-item-date">Mar 2023 - Jul 2025</span>
+                                </div>
+                                <p>Manager &bull; Hershey, PA</p>
+                                <ul>
+                                    <li>Supervised daily operations of a food truck business, including customer service</li>
+                                    <li>Trained and managed a small team to ensure consistent service quality</li>
+                                    <li>Coordinated inventory and restocking on the truck</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Single Blog Post View -->
             <div id="post-view" class="view">
                 <button class="back-btn" id="back-to-blog">← Back to Blog</button>
@@ -126,7 +281,17 @@
         </main>
 
         <footer class="site-footer">
-            <p>Built with curiosity</p>
+            <div class="footer-icons">
+                <a href="https://www.linkedin.com/in/ryansnavely27/" target="_blank" class="footer-icon" aria-label="LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </a>
+                <a href="https://github.com/BadWolf1000" target="_blank" class="footer-icon" aria-label="GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+                <a href="mailto:ryan.snavely1@gmail.com" class="footer-icon" aria-label="Email">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                </a>
+            </div>
         </footer>
 
         <!-- Blog Post Editor Modal -->
@@ -225,50 +390,6 @@
                         </div>
                         <pre class="output-code" id="output-json"></pre>
                     </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Quiz Modal -->
-        <div id="quiz-modal" class="quiz-modal hidden">
-            <div class="quiz-container">
-                <button class="quiz-close" id="quiz-close">&times;</button>
-                <div class="quiz-header">
-                    <h2>🧠 Linux Command Quiz</h2>
-                    <p>Test your knowledge!</p>
-                </div>
-                <div class="quiz-settings" id="quiz-settings">
-                    <h3>Select Categories</h3>
-                    <div class="quiz-category-grid" id="quiz-categories"></div>
-                    <div class="quiz-options">
-                        <label>
-                            Number of questions:
-                            <select id="quiz-count">
-                                <option value="5">5</option>
-                                <option value="10" selected>10</option>
-                                <option value="15">15</option>
-                                <option value="20">20</option>
-                            </select>
-                        </label>
-                    </div>
-                    <button class="quiz-start-btn" id="quiz-start">Start Quiz</button>
-                </div>
-                <div class="quiz-content hidden" id="quiz-content">
-                    <div class="quiz-progress">
-                        <span id="quiz-progress-text">Question 1 of 10</span>
-                        <div class="quiz-progress-bar">
-                            <div class="quiz-progress-fill" id="quiz-progress-fill"></div>
-                        </div>
-                    </div>
-                    <div class="quiz-question" id="quiz-question"></div>
-                    <div class="quiz-answers" id="quiz-answers"></div>
-                    <div class="quiz-feedback hidden" id="quiz-feedback"></div>
-                    <button class="quiz-next-btn hidden" id="quiz-next">Next Question</button>
-                </div>
-                <div class="quiz-results hidden" id="quiz-results">
-                    <div class="quiz-score" id="quiz-score"></div>
-                    <div class="quiz-summary" id="quiz-summary"></div>
-                    <button class="quiz-restart-btn" id="quiz-restart">Try Again</button>
                 </div>
             </div>
         </div>
